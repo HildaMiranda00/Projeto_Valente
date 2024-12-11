@@ -25,40 +25,15 @@ node_modules/
 /plugins/
 /platforms/
 
-www/
-build/
-merges/
-
-# Arquivos de configuração locais
 .idea/
 .vscode/
 *.log
 *.swp
 *.tmp
-*.temp
-
-# Arquivos de sistema
-Thumbs.db
-*.sublime-*
 *.bak
-*.orig
-
-# Configurações específicas do Cordova
-config.xml.backup
-package-lock.json
-npm-debug.log
-
-# Certificados ou chaves (caso você trabalhe com assinaturas de APKs)
+build/
 *.keystore
 *.jks
 *.p12
 *.key
 *.crt
-
-# Cache
-.cache/
-.tmp/
-
-# Outras extensões desnecessárias
-*.iml
-*.pyc
