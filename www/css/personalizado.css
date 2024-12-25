@@ -1,0 +1,22 @@
+body {
+    font-family: 'Arial', sans-serif;
+    color: #5f2808;
+    
+}
+
+.toolbar .toolbar-inner a {
+    text-align: center;
+    color: #5f2808;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.toolbar .toolbar-inner a.active {
+    color: #5f2808;
+    font-weight: bold;
+}
+
+.page-content .block {
+    margin: 20px;
+    text-align: center;
+}
