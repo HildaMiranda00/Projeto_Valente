@@ -1,3 +1,14 @@
+:root{
+    --branco: #ffff;
+    --preto: #2a2a2a;
+    --marrom: #4d352d;
+    --bege: #f9f5ea;
+    --laranja:#ffba56;
+    --azul:#5bbdd3;
+    --rosa:#e291a3;
+    --verde:#78c19e;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     color: #5f2808;
