@@ -56,6 +56,11 @@ var app = new Framework7({
 	  }
     },
     {
+      path: '/chatbot/',
+      url: 'chatbot.html',
+      animate: false,
+    },
+    {
       path: '/link3/',
       url: 'link3.html',
       animate: false,
@@ -114,3 +119,4 @@ function onDeviceReady() {
   }, false);
 
 }
+

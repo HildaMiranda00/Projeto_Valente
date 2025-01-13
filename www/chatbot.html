@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="lib/framework7-bundle.min.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div id="app">
+    <div class="view view-main">
+        <div data-name="chatbot" class="page color-theme-blue">
+            <div class="navbar">
+                <div class="navbar-bg"></div>
+                <div class="navbar-inner">
+                    <div class="title">Chatbot</div>
+                </div>
+            </div>
+            <div class="page-content">
+                <div class="block">
+                    <label for="context">Contexto:</label>
+                    <textarea id="context" placeholder="Insira o contexto aqui..." rows="5"></textarea>
+
+                    <label for="question">Pergunta:</label>
+                    <textarea id="question" placeholder="Insira sua pergunta aqui..." rows="2"></textarea>
+
+                    <button id="submit-btn" class="button button-fill" type="button">Perguntar</button>
+                    <div id="response" class="block"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="lib/framework7-bundle.min.js"></script>
+<script src="lib/jquery-3.7.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#submit-btn').on('click', function() {
+    console.log("Botão clicado"); 
+    const context = $('#context').val();
+    const question = $('#question').val();
+
+    $.ajax({
+        url: 'https://10.0.2.2:8000/api/chatbot/',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ context, question }),
+        success: function(response) {
+            console.log(response);
+            $('#response').html(`<p>Resposta: ${response.answer}</p>`);
+        },
+        error: function(error) {
+            console.log(error); 
+            $('#response').html(`<p>Error: ${error.responseJSON?.error || 'Erro desconhecido'}</p>`);
+        }
+    });
+});
+    });
+</script>
+</body>
+</html>
+

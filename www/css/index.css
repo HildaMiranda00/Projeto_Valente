@@ -31,3 +31,7 @@ body {
     margin: 20px;
     text-align: center;
 }
+.toolbar .tab-link {
+    flex: 1;
+    text-align: center;
+}
