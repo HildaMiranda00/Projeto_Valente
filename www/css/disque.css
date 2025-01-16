@@ -16,16 +16,40 @@ html, body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    font-size: var(--font-size-base); 
     background-color: var(--bege);
-    color: var(--marrom); 
+    color: var(--marrom);
+    font-size: var(--font-size-base);
 }
 
-/* Conteúdo principal */
-#disque-page-desc {
-    text-align: center;
-    font-size: 1.2rem; /* Usando rem para o tamanho da fonte */
-    margin: auto;
-    padding: 2vw; /* Usando unidades relativas à largura da viewport */
+/* Container principal com a imagem e texto */
+.disque-container {
+    display: flex;
+    align-items: center; /* Alinha a imagem e os textos verticalmente no centro */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    padding: 2rem; /* Adiciona espaçamento ao redor */
+    gap: 2rem; /* Espaço entre a imagem e os textos */
 }
 
+/* Estilo da imagem */
+.disque-image {
+    width: 30%; 
+    height: auto; /* Mantém a proporção */
+}
+
+/* Estilo do container de texto */
+.disque-text {
+    text-align: left; /* Alinha o texto à esquerda dentro do container */
+}
+
+/* Título principal */
+.disque-title {
+    font-size: 2rem; /* Tamanho maior para o título */
+    font-weight: bold;
+    margin: 0; /* Remove margens padrão */
+}
+
+/* Frase menor */
+.disque-subtitle {
+    font-size: 1rem; /* Tamanho menor para a frase */
+    margin-top: 0.5rem; /* Espaçamento entre o título e a frase */
+}
