@@ -1,85 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <!-- Required meta tags-->
-    <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <!-- Color theme for statusbar (Android only) -->
-    <meta name="theme-color" content="#2196f3">
-    <!-- Your app title -->
-    <title>Valente</title>
-    <!-- Path to Framework7 Library Bundle CSS -->
-    <link rel="stylesheet" href="lib/framework7-bundle.min.css">
-    <!-- CSS PERSONALIZADO PARA MENU-->
-    <link rel="stylesheet" href="css/index.css">
-    <!--Ícones Material Design-->
-    <link rel="stylesheet" href="css/materialdesignicons.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Splash Screen</title>
+  <link rel="stylesheet" href="css/index.css">
 </head>
-
 <body>
-<!-- App root element -->
-<div id="app">
-    <!-- Main view with tab bar -->
-    <div class="view view-main">
-        <!-- TAB BAR -->
-        <div class="toolbar toolbar-bottom">
-            <div class="toolbar-inner display-flex">
-                <a href="/index/" class="tab-link link active">
-                    <i class="mdi mdi-home"></i>
-                    <span>Comunidade</span>
-                </a>
-                <a href="/leis/" class="tab-link link">
-                    <i class="mdi mdi-book"></i>
-                    <span>Leis Brasileiras</span>
-                </a>
-                <a href="/denuncia/" class="tab-link link">
-                    <i class="mdi mdi-alert-circle"></i>
-                    <span>Denúncia</span>
-                </a>
-                <a href="/agenda/" class="tab-link link">
-                    <i class="mdi mdi-calendar"></i>
-                    <span>Agenda</span>
-                </a>
-                <a href="/chatbot/" class="tab-link link">
-                    <i class="mdi mdi-robot"></i>
-                    <span>Chatbot</span>
-                </a>
-            </div>
-        </div>
+  <div class="splash-screen">
+    <img src="img/tela_splash_screen_boneca.svg" alt="Logo Valente" class="logo">
+    <img src="img/nome_valente.svg" alt="Segunda Imagem" class="imagem-extra">
+    <p class="frase">Ajude a monitorar e Mantema-se informado.<br>Abuso e exploração é crime.</p>
+  </div>
 
-        <!-- Initial Page -->
-        <div data-name="index" class="page color-theme-blue">
-            <!-- Navbar -->
-            <div class="navbar">
-                <div class="navbar-bg"></div>
-                <div class="navbar-inner justify-content-center">
-                    <div class="title">VALENTE</div>
-                </div>
-            </div>
-
-            <!-- Page content -->
-            <div class="page-content">
-                <div class="block">
-                    <h2>Bem-vindo ao Valente!</h2>
-                    <p>Escolha uma opção no menu abaixo para continuar.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Path to Framework7 Library Bundle JS-->
-<script src="lib/framework7-bundle.min.js"></script>
-<script src="lib/jquery-3.7.0.min.js"></script>
-
-<!-- Roteamento do app -->
-<script type="text/javascript" src="js/routes.js"></script>
-<!-- Cordova -->
-<script src="cordova.js"></script>
-
+  <script src="js/script.js"></script>
 </body>
-
 </html>

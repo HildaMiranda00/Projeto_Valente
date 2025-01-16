@@ -1,37 +1,49 @@
-:root{
-    --branco: #ffff;
-    --preto: #2a2a2a;
-    --marrom: #4d352d;
-    --bege: #f9f5ea;
-    --laranja:#ffba56;
-    --azul:#5bbdd3;
-    --rosa:#e291a3;
-    --verde:#78c19e;
+:root {
+  --branco: #ffff;
+  --bege: #F9F5E9;
+  --marrom: #4D352D;
+  --rosa: #E291A3;
+  --laranja: #FAB958;
+  --azul: #65B6DB;
+  --verde: #78C19E;
+  --font-size-base: 1rem; 
 }
 
-body {
-    font-family: 'Arial', sans-serif;
-    color: #5f2808;
-    
-}
-
-.toolbar .toolbar-inner a {
+  .splash-screen {
+    display: flex; /* Ativa o Flexbox */
+    flex-direction: column; /* Organiza os elementos em coluna */
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente */
+    height: 100vh; /* Altura igual à da tela */
+    width: 100vw; /* Largura igual à da tela */
     text-align: center;
-    color: #5f2808;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.toolbar .toolbar-inner a.active {
-    color: #5f2808;
-    font-weight: bold;
-}
-
-.page-content .block {
-    margin: 20px;
-    text-align: center;
-}
-.toolbar .tab-link {
-    flex: 1;
-    text-align: center;
-}
+    background-color: var(--bege); /* Fundo opcional */
+    padding: 2rem; /* Espaçamento interno */
+    box-sizing: border-box; /* Inclui o padding no tamanho total */
+  }
+  
+  /* Primeira imagem (logo) menor */
+  .logo {
+    display: block;
+    max-width: 35%; /* Proporcional à largura da tela */
+    height: auto; /* Mantém a proporção */
+    margin-bottom: 1rem; /* Espaço entre a primeira imagem e o próximo elemento */
+  }
+  
+  /* Segunda imagem (maior) */
+  .imagem-extra {
+    display: block;
+    max-width: 85%; /* Proporcional à largura da tela */
+    height: auto; /* Mantém a proporção */
+    margin: 2rem auto; /* Espaço entre as imagens */
+  }
+  
+  /* Frase menor e em negrito */
+  .frase {
+    font-size: 0.85rem; /* Tamanho proporcional à fonte raiz */
+    font-weight: bold; /* Negrito */
+    color: var(--marrom); /* Usando a variável de cor */
+    margin-top: 1.5rem; /* Espaçamento superior proporcional */
+    line-height: 1.4; /* Melhor espaçamento entre linhas */
+  }
+  
