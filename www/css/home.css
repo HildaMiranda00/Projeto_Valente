@@ -73,7 +73,7 @@ html, body {
 }
 
 .button:hover {
-    background-color: var(--rosa);
+    background-color: #E291A3;
 }
 
 /* Imagem de apoio (baixo) */
@@ -84,3 +84,18 @@ html, body {
 }
 
 
+.support-image {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0); 
+    }
+    50% {
+        transform: translateY(-10px); 
+    }
+    100% {
+        transform: translateY(0); 
+    }
+}
