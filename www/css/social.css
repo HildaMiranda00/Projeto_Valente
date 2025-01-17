@@ -52,7 +52,7 @@ html, body {
 .social-subtitle {
     font-size: 1rem;
     margin-top: 0.5rem; 
-    color: #5a3714;
+    color: var(--marrom);
     font-weight: normal;
     margin-left: 0.1cm;
 }
@@ -64,7 +64,7 @@ html, body {
 .card {
     display: flex;
     align-items: center;
-    background-color: #91c8fa;
+    background-color: var(--azul);
     margin: 10px 0;
     padding: 10px;
     border-radius: 8px;
@@ -91,12 +91,12 @@ html, body {
 
 .card-title {
     font-size: 25px;
-    color: #fff;
+    color: var(--branco);
     margin: 0;
 }
 
 .card-description {
     font-size: 14px;
-    color: #f0f0f0;
+    color: var(--branco);
 }
 
