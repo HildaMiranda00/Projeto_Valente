@@ -4,63 +4,83 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Chatbot</title>
-    <!-- <link rel="stylesheet" href="lib/framework7-bundle.min.css"> -->
-    <link rel="stylesheet" href="./css/main-bar.css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/main-bar.css">
+    <link rel="stylesheet" href="css/chatbot.css">
 </head>
 <body>
-<div id="app">
-    <div class="view view-main">
-        <div data-name="chatbot" class="page color-theme-blue">
-            <div class="navbar">
-                <div class="navbar-bg"></div>
-                <div class="navbar-inner">
-                    <div class="title">Chatbot</div>
-                </div>
-            </div>
-            <div class="page-content">
-                <div class="block">
-                    <label for="context">Contexto:</label>
-                    <textarea id="context" placeholder="Insira o contexto aqui..." rows="5"></textarea>
+    <header>
+        <img src="img/borboleta.svg" alt="Imagem" class="social-image">
+        <h1>Chatbot</h1>
+    </header>
+    <div class="container">
+        <label for="context">Contexto:</label>
+        <textarea id="context" placeholder="Insira o contexto aqui..." rows="5"></textarea>
 
-                    <label for="question">Pergunta:</label>
-                    <textarea id="question" placeholder="Insira sua pergunta aqui..." rows="2"></textarea>
+        <label for="question">Pergunta:</label>
+        <textarea id="question" placeholder="Insira sua pergunta aqui..." rows="2"></textarea>
 
-                    <button id="submit-btn" class="button button-fill" type="button">Perguntar</button>
-                    <div id="response" class="block"></div>
-                </div>
-            </div>
-        </div>
+        <button id="submit-btn" type="button">Perguntar</button>
+        <div id="response"></div>
     </div>
-</div>
-<!-- <script src="lib/framework7-bundle.min.js"></script> -->
-<script src="lib/jquery-3.7.0.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#submit-btn').on('click', function() {
-    console.log("Botão clicado"); 
-    const context = $('#context').val();
-    const question = $('#question').val();
+    <footer>
+        <p>Valente &copy; 2025</p>
+    </footer>
 
-    $.ajax({
-        url: 'https://10.0.2.2:8000/api/chatbot/',
-        method: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify({ context, question }),
-        success: function(response) {
-            console.log(response);
-            $('#response').html(`<p>Resposta: ${response.answer}</p>`);
-        },
-        error: function(error) {
-            console.log(error); 
-            $('#response').html(`<p>Error: ${error.responseJSON?.error || 'Erro desconhecido'}</p>`);
-        }
-    });
-});
-    });
-</script>
-<script src="./js/routes.js"></script>
-<script src="./js/main-bar.js"></script>
+    <script src="lib/jquery-3.7.0.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            $('#submit-btn').off('click').on('click', function () {
+                const context = $('#context').val();
+                const question = $('#question').val();
+
+                if (!context || !question) {
+                    $('#response').html('<p>Por favor, insira tanto o contexto quanto a pergunta.</p>');
+                    return;
+                }
+
+                $.ajax({
+                    url: 'http://10.0.2.2:8000/api/chatbot/',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ context, question }),
+                    success: function (response) {
+                        $('#response').html(`<p>Resposta: ${response.answer || 'Não foi possível obter uma resposta.'}</p>`);
+                    },
+                    error: function (error) {
+                        $('#response').html(`<p>Erro: ${error.responseJSON?.error || 'Erro desconhecido'}</p>`);
+                    }
+                });
+            });
+        });
+    </script>
+     <div class="footer">
+        <div class="footer-icon">
+          <img src="img/home-icon.svg" alt="Home">
+          <p>Home</p>
+        </div>
+        <div class="footer-icon">
+          <img src="img/social-icon.svg" alt="Social">
+          <p>Social</p>
+        </div>
+        <div class="footer-icon">
+          <img src="img/leis-icon.svg" alt="Leis">
+          <p>Leis</p>
+        </div>
+        <div class="footer-icon">
+          <img src="img/disque-icon.svg" alt="Disque">
+          <p>Disque</p>
+        </div>
+        <div class="footer-icon">
+          <img src="img/eventos-icon.svg" alt="Eventos">
+          <p>Eventos</p>
+        </div>
+        <div class="footer-icon">
+          <img src="img/bot-icon.svg" alt="Bot">
+          <p>Bot</p>
+        </div>
+      </div>
+      <!-- Scripts -->
+      <script src="./js/routes.js"></script>
+      <script src="./js/main-bar.js"></script>
 </body>
 </html>
-

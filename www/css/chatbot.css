@@ -6,10 +6,9 @@
     --laranja: #FAB958;
     --azul: #65B6DB;
     --verde: #78C19E;
-    --font-size-base: 1rem; /* Tamanho base da fonte */
+    --font-size-base: 1rem;
 }
 
-/* Garante que a página ocupe toda a viewport */
 html, body {
     margin: 0;
     padding: 0;
@@ -17,14 +16,113 @@ html, body {
     display: flex;
     flex-direction: column;
     background-color: var(--bege);
-    color: var(--marrom); 
-    font-size: var(--font-size-base); /* Usando rem para fontes base */
+    color: var(--marrom);
+    font-size: var(--font-size-base);
+    font-family: Arial, sans-serif;
 }
 
-/* Conteúdo principal */
-#app {
+header {
     text-align: center;
-    font-size: 1.2rem; /* Usando rem para o tamanho da fonte */
-    margin: auto;
-    padding: 2vw; /* Usando unidades relativas à largura da viewport */
+    padding: 20px;
+    font-size: 1.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1rem;
 }
+
+.social-image {
+    width: 60px; 
+    height: 2cm;
+}
+
+.container {
+    padding: 20px;
+    text-align: left;
+    flex: 1;
+    font-size: 20px;
+}
+
+textarea {
+    width: 100%;
+    max-width: 600px; 
+    padding: 10px;
+    margin: 10px auto; 
+    border: 1px solid var(--marrom);
+    border-radius: 4px;
+    font-size: 1rem;
+    display: block; 
+}
+
+
+
+button {
+    background-color: var(--verde);
+    color: var(--branco);
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--azul);
+}
+
+
+.social-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1px;
+    width: 100%;
+    gap: 2rem;
+}
+
+.social-text {
+    text-align: left;
+    font-weight: bold;
+}
+
+.social-title {
+    font-size: 35px;
+    font-weight: bold;
+    color: #5a3714;
+    margin: 10px 0 5px;
+}
+
+.social-subtitle {
+    font-size: 18px;
+    margin-top: 0rem;
+    color: #5a3714;
+    font-weight: normal;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #5a3714;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-icon {
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+}
+
+.footer-icon img {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 5px;
+}
+
+

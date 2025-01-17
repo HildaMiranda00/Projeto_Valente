@@ -6,54 +6,121 @@
     --laranja: #FAB958;
     --azul: #65B6DB;
     --verde: #78C19E;
-    --font-size-base: 1rem; /* Tamanho base da fonte */
+    --font-size-base: 1rem;
 }
 
-/* Garante que a página ocupe toda a viewport */
 html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    display: flex;
-    flex-direction: column;
     background-color: var(--bege);
     color: var(--marrom);
     font-size: var(--font-size-base);
+    font-family: Arial, sans-serif;
+    overflow-y: auto; 
+    padding-bottom: 60px;
 }
 
-/* Container principal com a imagem e texto */
 .social-container {
     display: flex;
-    align-items: center; /* Alinha a imagem e os textos verticalmente no centro */
-    justify-content: center; /* Centraliza o conteúdo horizontalmente */
-    padding: 2rem; /* Adiciona espaçamento ao redor */
-    gap: 2rem; /* Espaço entre a imagem e os textos */
+    align-items: center; 
+    justify-content: center;
+    gap: 1rem; 
+    text-align: left;
+    padding: 20px;
 }
 
-/* Estilo da imagem */
 .social-image {
-    width: 30%; 
-    height: auto; /* Mantém a proporção */
+    width: 25%; 
+    height: auto;
+    margin-top: -1cm;
+    margin-left: 0.5;
 }
 
-/* Estilo do container de texto */
-.social-text {
-    text-align: left; /* Alinha o texto à esquerda dentro do container */
-}
-
-/* Título principal */
 .social-title {
-    font-size: 2rem; /* Tamanho maior para o título */
+    font-size: 40px; 
     font-weight: bold;
-    margin: 0; /* Remove margens padrão */
+    margin: 0;
 }
 
-/* Frase menor */
+.social-text {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+}
+
 .social-subtitle {
-    font-size: 1rem; /* Tamanho menor para a frase */
-    margin-top: 0.5rem; /* Espaçamento entre o título e a frase */
+    font-size: 1rem;
+    margin-top: 0.5rem; 
+    color: #5a3714;
+    font-weight: normal;
+    margin-left: 0.1cm;
 }
 
+.cards-container {
+    padding: 20px;
+}
 
+.card {
+    display: flex;
+    align-items: center;
+    background-color: #91c8fa;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease;
+}
 
+.card:hover {
+    background-color: var(--verde);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+}
+
+.card img {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    border-radius: 50%;
+}
+
+.card-content {
+    text-align: left;
+}
+
+.card-title {
+    font-size: 25px;
+    color: #fff;
+    margin: 0;
+}
+
+.card-description {
+    font-size: 14px;
+    color: #f0f0f0;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #5a3714;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px; 
+}
+
+.footer-icon {
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+}
+
+.footer-icon img {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 5px;
+}
 
