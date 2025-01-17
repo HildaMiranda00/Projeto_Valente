@@ -9,7 +9,7 @@
     --font-size-base: 1rem; /* Tamanho base da fonte */
 }
 
-/* Garante que a página ocupe toda a viewport */
+
 html, body {
     margin: 0;
     padding: 0;
@@ -37,7 +37,7 @@ html, body {
 }
 
 /* Estilo do container de texto */
-.leis-text {
+.disque-text {
     text-align: left; /* Alinha o texto à esquerda dentro do container */
 }
 
@@ -52,6 +52,57 @@ html, body {
 .leis-subtitle {
     font-size: 1rem; /* Tamanho menor para a frase */
     margin-top: 0.5rem; /* Espaçamento entre o título e a frase */
+}
+
+.search-button:hover {
+    background-color: var(--rosa);
+}
+
+/* Estilo para a lista de leis */
+.laws-container {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: var(--branco);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.law-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-bottom: 1px solid var(--bege);
+}
+
+.law-item h2 {
+    font-size: 1.2rem;
+    color: var(--marrom);
+    margin: 0;
+}
+
+.law-item a {
+    color: var(--azul);
+    text-decoration: none;
+}
+
+.law-item a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo do botão de busca */
+.search-container {
+    padding: 2rem;
+    text-align: center;
+}
+
+.search-button {
+    background-color: var(--laranja);
+    color: var(--branco);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 

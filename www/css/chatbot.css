@@ -102,27 +102,3 @@ button:hover {
     font-weight: normal;
 }
 
-.footer {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #5a3714;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
-.footer-icon {
-    text-align: center;
-    color: #fff;
-    font-size: 12px;
-}
-
-.footer-icon img {
-    width: 24px;
-    height: 24px;
-    margin-bottom: 5px;
-}
-
-
