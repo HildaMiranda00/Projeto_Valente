@@ -23,7 +23,7 @@ html, body {
 
 header {
     text-align: center;
-    padding: 20px;
+    padding: 1.25rem; 
     font-size: 1.5rem;
 
     display: flex;
@@ -33,72 +33,41 @@ header {
     gap: 1rem;
 }
 
-.social-image {
-    width: 60px; 
-    height: 2cm;
+.chatbot-image {
+    width: 4rem; 
+    height: auto; 
 }
 
 .container {
-    padding: 20px;
+    padding: 1.25rem; 
     text-align: left;
     flex: 1;
-    font-size: 20px;
+    font-size: 1.25rem; 
 }
 
 textarea {
     width: 100%;
-    max-width: 600px; 
-    padding: 10px;
-    margin: 10px auto; 
+    max-width: 37.5rem; 
+    padding: 0.625rem; 
+    margin: 0.625rem auto; 
     border: 1px solid var(--marrom);
-    border-radius: 4px;
+    border-radius: 0.25rem; 
     font-size: 1rem;
-    display: block; 
+    box-sizing: border-box; 
+    display: block;
 }
-
-
 
 button {
     background-color: var(--verde);
     color: var(--branco);
-    padding: 10px;
+    padding: 0.625rem; 
     border: none;
-    border-radius: 4px;
+    border-radius: 0.25rem;
     font-size: 1rem;
     cursor: pointer;
 }
 
 button:hover {
     background-color: var(--azul);
-}
-
-
-.social-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 1px;
-    width: 100%;
-    gap: 2rem;
-}
-
-.social-text {
-    text-align: left;
-    font-weight: bold;
-}
-
-.social-title {
-    font-size: 35px;
-    font-weight: bold;
-    color: var(--marrom);
-    margin: 10px 0 5px;
-}
-
-.social-subtitle {
-    font-size: 18px;
-    margin-top: 0rem;
-    color: var(--marrom);
-    font-weight: normal;
 }
 
