@@ -14,15 +14,15 @@ body .main-bar {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 8vh; /* A altura da barra agora é 8% da altura da viewport */
-    background-color: var(--marrom); /* Cor goiaba */
+    height: 8vh; /* Altura padrão da barra */
+    background-color: var(--marrom);
     display: flex;
     justify-content: space-around;
     align-items: center;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
     z-index: 1000;
+    transition: height 0.3s ease; /* Transição suave ao alterar a altura */
 }
-
 
 body .main-bar img {
     width: 3rem; /* Usando rem para o tamanho das imagens */
