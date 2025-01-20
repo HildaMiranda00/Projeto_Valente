@@ -3,23 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Página inicial do site com navegação simples e eficaz.">
-  <title>Agenda Colaborativa</title>
+  <meta name="description" content="Exibição de eventos filtrados por estado na Agenda Colaborativa.">
+  <title>Exibir Eventos - Agenda Colaborativa</title>
   <link rel="stylesheet" href="./css/main-bar.css">
   <link rel="stylesheet" href="./css/eventos.css">
 </head>
 <body>
-  <!-- Conteúdo principal -->
   <div class="eventos-container">
     <img src="img/tela_eventos_circulo_coracao_verde.svg" alt="Imagem" class="eventos-image">
     <div class="eventos-text">
-      <h1 class="eventos-title">Agenda Colaborativa</h1>
-      <!-- <p class="eventos-subtitle">Para mais informações é só clicar</p> -->
+      <h1 class="eventos-title">Eventos Cadastrados</h1>
     </div>
   </div>
 
-  <!-- Scripts -->
-  <script src="./js/routes.js"></script>
+  <!-- Botão para ir à tela de cadastro de evento -->
+  <div class="cadastro-container">
+    <button class="cadastro-btn" onclick="window.location.href='eventos-cadastro.html'">Cadastrar Evento</button>
+  </div>
+
+  <!-- Filtro de Eventos -->
+  <div class="filtro-container">
+    <select id="filtroEstado" class="filtro-select">
+      <option value="">Todos os Estado</option>
+      <option value="Bahia">Bahia</option>
+      <option value="Minas Gerais">Minas Gerais</option>
+      <option value="Pernambuco">Pernambuco</option>
+      <option value="Rio de Janeiro">Rio de Janeiro</option>
+      <option value="Rio Grande do Sul">Rio Grande do Sul</option>
+      <option value="São Paulo">São Paulo</option>
+    </select>
+    <!-- <button class="filtro-btn" onclick="filtrarEventos()">Filtrar</button> -->
+  </div>
+
+  <div id="eventosList"></div>
+
+  <script src="./js/eventos-filtrados.js"></script>
   <script src="./js/main-bar.js"></script>
 </body>
 </html>

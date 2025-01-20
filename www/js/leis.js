@@ -3,33 +3,29 @@ document.addEventListener("DOMContentLoaded", () => {
     const lawsContainer = document.getElementById("laws-container");
 
     fetchButton.addEventListener("click", async () => {
-        const apiKey = "SUA_API_KEY"; // Substitua pela sua chave da API
-        const cx = "SEU_CX_CODE"; // Substitua pelo código do mecanismo de busca
-        const query = "leis exploração abuso sexual crianças site:.gov.br";
+        const query = "exploração abuso sexual crianças";
 
-        const apiUrl = `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(
-            query
-        )}&key=${apiKey}&cx=${cx}`;
+        // URL do servidor proxy
+        const proxyUrl = `http://localhost:3000/proxy?query=${encodeURIComponent(query)}`;
 
         lawsContainer.innerHTML = "<p>Carregando resultados...</p>";
 
         try {
-            const response = await fetch(apiUrl);
+            const response = await fetch(proxyUrl);
             if (!response.ok) {
                 throw new Error("Erro ao buscar dados da API.");
             }
 
             const data = await response.json();
-            const items = data.items || [];
+            const items = data.documentos || [];
 
             if (items.length > 0) {
                 lawsContainer.innerHTML = items
                     .map(
                         (item) => `
                         <div class="law-item">
-                            <h2>${item.title}</h2>
-                            <p>${item.snippet}</p>
-                            <a href="${item.link}" target="_blank">Leia mais</a>
+                            <h2><a href="${item.titulo}" target="_blank">${item.titulo}</a></h2>
+                            <p>${item.ementa || "Sem resumo disponível."}</p>
                         </div>
                     `
                     )

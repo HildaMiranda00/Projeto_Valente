@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cadastro de evento para a Agenda Colaborativa.">
+  <title>Cadastrar Evento - Agenda Colaborativa</title>
+  <link rel="stylesheet" href="./css/main-bar.css">
+  <link rel="stylesheet" href="./css/eventos-cadastrado.css">
+</head>
+<body>
+  <div class="eventos-container">
+    <img src="img/tela_eventos_circulo_coracao_verde.svg" alt="Imagem" class="eventos-image">
+    <div class="eventos-text">
+      <h1 class="eventos-title">Cadastrar Evento</h1>
+    </div>
+  </div>
+
+  <form id="eventoForm">
+    <div class="form-container">
+        <div class="campo">
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" required>
+        </div>
+
+        <div class="campo">
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" required></textarea>
+        </div>
+
+        <div class="campo">
+            <label for="local">Local:</label>
+            <input type="text" id="local" required>
+        </div>
+
+        <div class="campo-horizontal">
+            <div class="campo">
+                <label for="estado">Estado:</label>
+                <select id="estado" required>
+                    <option value="">Selecione</option>
+                    <option value="Bahia">Bahia</option>
+                    <option value="Minas Gerais">Minas Gerais</option>
+                    <option value="Pernambuco">Pernambuco</option>
+                    <option value="Rio de Janeiro">Rio de Janeiro</option>
+                    <option value="Rio Grande do Sul">Rio Grande do Sul</option>
+                    <option value="São Paulo">São Paulo</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="data">Data:</label>
+                <input type="date" id="data" placeholder="dd/mm/yyyy" required>
+            </div>
+        </div>
+
+        <button type="submit">Inserir Evento</button>
+    </div>
+</form>
+
+  <script src="./js/evento.js"></script>
+  <script src="./js/main-bar.js"></script>
+</body>
+</html>
+

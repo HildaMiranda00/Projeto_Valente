@@ -6,7 +6,7 @@
     --laranja: #FAB958;
     --azul: #65B6DB;
     --verde: #78C19E;
-    --font-size-base: 1rem; /* Tamanho base da fonte */
+    --font-size-base: 1rem;
 }
 
 /* Garante que a página ocupe toda a viewport */
@@ -24,33 +24,107 @@ html, body {
 /* Container principal com a imagem e texto */
 .eventos-container {
     display: flex;
-    align-items: center; /* Alinha a imagem e os textos verticalmente no centro */
-    justify-content: center; /* Centraliza o conteúdo horizontalmente */
-    padding: 2rem; /* Adiciona espaçamento ao redor */
-    gap: 2rem; /* Espaço entre a imagem e os textos */
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    gap: 2rem;
 }
 
 /* Estilo da imagem */
 .eventos-image {
-    width: 30%; 
-    height: auto; /* Mantém a proporção */
+    width: 30%;
+    height: auto;
 }
 
 /* Estilo do container de texto */
 .eventos-text {
-    text-align: left; /* Alinha o texto à esquerda dentro do container */
+    text-align: left;
 }
 
 /* Título principal */
 .eventos-title {
-    font-size: 2rem; /* Tamanho maior para o título */
+    font-size: 2rem;
     font-weight: bold;
-    margin: 0; /* Remove margens padrão */
+    margin: 0;
 }
 
-/* Frase menor */
-/* .eventos-subtitle {
-    font-size: 1rem; 
-    margin-top: 0.5rem; 
-} */
+/* Botão de Cadastrar Evento */
+.cadastro-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
 
+.cadastro-btn {
+    background-color: var(--verde);
+    color: var(--branco);
+    font-size: 1.2rem;
+    font-weight: bold; /* Fonte em negrito */
+    padding: 1rem 2rem;
+    border: 1px solid var(--branco); /* Contorno fino branco */
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 15rem; /* Largura mínima para o botão */
+}
+
+.cadastro-btn:hover {
+    background-color: var(--rosa);
+}
+
+/* Filtro de Estado */
+.filtro-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.filtro-select {
+    padding: 0.5rem;
+    font-size: 1rem;
+    color: var(--branco);
+    background-color: var(--marrom);
+    border: none;
+    border-radius: 8px;
+    width: 15rem; /* Aumenta a largura do filtro */
+}
+
+/* Estilos para os cards de eventos */
+.evento {
+    background-color: var(--branco);
+    border: 2px solid var(--verde); /* Bordas verdes */
+    border-radius: 8px; /* Arredonda as bordas */
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    margin-bottom: 1rem; /* Espaçamento entre os cards */
+    width: 18rem; /* Largura fixa do card */
+    transition: all 0.3s ease;
+}
+
+/* Exibição dos eventos */
+#eventosList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem; /* Espaçamento entre os cards */
+    padding-bottom: 2rem; /* Espaço extra na parte inferior para garantir que o último card não fique colado */
+    margin-bottom: 3rem; /* Evita que o conteúdo fique colado ao rodapé */
+    
+}
+
+#nenhumEvento {
+    display: flex;
+    justify-content: center; 
+    height: 60vh; 
+    padding: 0 2rem; 
+    font-size: 1rem; 
+    font-weight: bold;
+    color: var(--marrom);
+    text-align: center; 
+    background-color: var(--bege); 
+    border-radius: 8px;
+}
