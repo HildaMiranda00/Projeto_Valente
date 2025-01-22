@@ -53,6 +53,38 @@ document.addEventListener('DOMContentLoaded', function () {
             mainBar.style.height = `${initialHeight}px`;
         }
     });
+
+    // Lógica para destacar o ícone da página atual
+    const currentPath = window.location.pathname.split('/').pop();
+    const links = document.querySelectorAll('#main-bar .link');
+
+    links.forEach(link => {
+        const page = link.getAttribute('data-page');
+        const img = link.querySelector('img');
+        if (currentPath === `${page}.html`) {
+            img.classList.add('active-icon'); // Destaca o ícone da página atual
+        } else {
+            img.classList.remove('active-icon');
+        }
+
+        // Adicionando evento de clique para mudar a cor do ícone
+        link.addEventListener('click', function (e) {
+            e.preventDefault(); // Previne o comportamento padrão de navegação
+
+            // Remove a classe 'active-icon' de todos os ícones
+            links.forEach(item => {
+                const iconImg = item.querySelector('.svg-icon');
+                iconImg.classList.remove('active-icon');
+            });
+
+            // Adiciona a classe 'active-icon' no ícone do link clicado
+            const iconImg = link.querySelector('.svg-icon');
+            iconImg.classList.add('active-icon');
+            
+            // Agora redireciona para a página
+            setTimeout(() => {
+                window.location.href = link.href;
+            }, 100);  // Atraso para permitir a animação da troca de cor
+        });
+    });
 });
-
-

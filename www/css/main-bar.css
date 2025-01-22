@@ -6,7 +6,7 @@
     --laranja: #FAB958;
     --azul: #65B6DB;
     --verde: #78C19E;
-    --font-size-base: 1rem; /* Tamanho base da fonte */
+    --font-size-base: 1rem; 
 }
 
 body .main-bar {
@@ -21,14 +21,13 @@ body .main-bar {
     align-items: center;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
     z-index: 1000;
-    transition: height 0.3s ease; /* Transição suave ao alterar a altura */
+    transition: height 0.3s ease; 
 }
 
 body .main-bar img {
-    width: 3rem; /* Usando rem para o tamanho das imagens */
+    width: 3rem; 
     height: 3rem;
     filter: brightness(0) invert(1); /* Ícones inativos em branco */
-   
 }
 
 body .main-bar img.active-icon {
@@ -40,8 +39,8 @@ body .main-bar a {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 10vw; /* Largura dos itens como uma porcentagem da largura da tela */
-    height: 10vw; /* Altura dos itens proporcional à largura */
+    width: 10vw;
+    height: 10vw;
     border-radius: 50%;
     background-color: transparent;
     cursor: pointer;
