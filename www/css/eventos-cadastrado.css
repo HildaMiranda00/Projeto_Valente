@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 :root {
     --branco: #ffff;
     --bege: #F9F5E9;
@@ -19,6 +21,7 @@ html, body {
     background-color: var(--bege);
     color: var(--marrom);
     font-size: var(--font-size-base);
+    font-family: Arial, sans-serif;
 }
 
 /* Container principal com a imagem e texto */
@@ -46,6 +49,7 @@ html, body {
     font-size: 2rem;
     font-weight: bold;
     margin: 0;
+    font-family: "Roboto", sans-serif;
 }
 
 form {

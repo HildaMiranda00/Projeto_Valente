@@ -18,7 +18,8 @@ html, body {
     flex-direction: column;
     background-color: var(--bege);
     color: var(--marrom); 
-    font-size: var(--font-size-base); /* Usando rem para fontes base */
+    font-size: var(--font-size-base); 
+    font-family: Arial, sans-serif;
 }
 
 /* Container centralizando todo o conteúdo */
@@ -50,6 +51,7 @@ html, body {
     font-size: 1rem;
     color: var(--marrom);
     margin-bottom: 2rem;
+    font-family: Arial, sans-serif;
 }
 
 /* Botões de navegação */

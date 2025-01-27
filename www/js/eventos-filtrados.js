@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     eventosList.innerHTML = '';
 
     if (eventos.length === 0) {
-      eventosList.innerHTML = '<div id="nenhumEvento"><p><strong>Nenhum evento encontrado. Tente aplicar outro filtro.</strong></p></div>';
+      eventosList.innerHTML = '<div id="nenhumEvento"><p><strong>Nenhum evento encontrado.<br>Tente aplicar outro filtro.</strong></p></div>';
       return;
     }
 

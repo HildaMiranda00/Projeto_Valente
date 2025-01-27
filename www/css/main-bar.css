@@ -22,6 +22,7 @@ body .main-bar {
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
     z-index: 1000;
     transition: height 0.3s ease; 
+    font-family: Arial, sans-serif;
 }
 
 body .main-bar img {

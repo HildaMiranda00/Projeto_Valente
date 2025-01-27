@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 :root {
     --branco: #ffff;
     --bege: #F9F5E9;
@@ -19,39 +21,41 @@ html, body {
     background-color: var(--bege);
     color: var(--marrom);
     font-size: var(--font-size-base);
+    font-family: Arial, sans-serif;
 }
 
 /* Container principal com a imagem e texto */
 .leis-container {
     display: flex;
-    align-items: center; /* Alinha a imagem e os textos verticalmente no centro */
-    justify-content: center; /* Centraliza o conteúdo horizontalmente */
-    padding: 2rem; /* Adiciona espaçamento ao redor */
-    gap: 2rem; /* Espaço entre a imagem e os textos */
+    align-items: center; 
+    justify-content: center; 
+    padding: 2rem; 
+    gap: 2rem; 
 }
 
 /* Estilo da imagem */
 .leis-image {
     width: 30%; 
-    height: auto; /* Mantém a proporção */
+    height: auto; 
 }
 
 /* Estilo do container de texto */
 .disque-text {
-    text-align: left; /* Alinha o texto à esquerda dentro do container */
+    text-align: left; 
 }
 
 /* Título principal */
 .leis-title {
-    font-size: 2rem; /* Tamanho maior para o título */
+    font-size: 2rem;
     font-weight: bold;
-    margin: 0; /* Remove margens padrão */
+    margin: 0; 
+    font-family: "Roboto", sans-serif;
 }
 
 /* Frase menor */
 .leis-subtitle {
-    font-size: 1rem; /* Tamanho menor para a frase */
-    margin-top: 0.5rem; /* Espaçamento entre o título e a frase */
+    font-size: 1rem; 
+    margin-top: 0.5rem; 
 }
 
 .search-button:hover {

@@ -16,6 +16,7 @@ html, body {
   height: 100%;
   background-color: var(--bege);
   box-sizing: border-box; 
+  font-family: Arial, sans-serif;
 }
 
   .splash-screen {
