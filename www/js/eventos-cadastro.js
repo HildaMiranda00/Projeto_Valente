@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   // Recupera os eventos armazenados no localStorage
   const eventos = JSON.parse(localStorage.getItem('eventos')) || [];
 
@@ -30,18 +30,24 @@ document.addEventListener('DOMContentLoaded', function() {
     eventos.forEach(evento => {
       const divEvento = document.createElement('div');
       divEvento.classList.add('evento');
+
+      // Usa uma imagem padrão se nenhuma imagem for fornecida
+      const imagemEvento = evento.imagem || 'img/tela_eventos_imagem_perfil.png';
+
       divEvento.innerHTML = `
+        <img src="${imagemEvento}" alt="Imagem do evento" id = "imgEvento" class="card-image">
         <h3>${evento.titulo}</h3>
         <p>${evento.descricao}</p>
+        <p><strong>Promovido por:</strong> ${evento.promotor}</p>
         <p><strong>Local:</strong> ${evento.local}</p>
         <p><strong>Estado:</strong> ${evento.estado}</p>
-      <p><strong>Data:</strong> ${evento.data}</p>
-      <p><strong>Telefone:</strong> ${evento.telefone}</p>
-      <p><strong>E-mail:</strong> <a href="mailto:${evento.email}">${evento.email}</a></p>
-      <p><strong>Link:</strong> <a href="${evento.link}" target="_blank">${evento.link}</a></p>
-      <p><strong>Horário:</strong> ${evento.horario}</p>
-      <p><strong>Promovido por:</strong> ${evento.promotor}</p>
+        <p><strong>Data:</strong> ${evento.data}</p>
+        <p><strong>Horário:</strong> ${evento.horario}</p>
+        <p><strong>Telefone:</strong> ${evento.telefone}</p>
+        <p><strong>E-mail:</strong> <a href="mailto:${evento.email}">${evento.email}</a></p>
+        <p><strong>Link:</strong> <a href="${evento.link}" target="_blank">${evento.link}</a></p>
       `;
+
       eventosList.appendChild(divEvento);
     });
   }
@@ -53,10 +59,8 @@ document.addEventListener('DOMContentLoaded', function() {
   filtrarEventos();
 
   // Atualiza o link de redirecionamento para a página de cadastro
-  document.querySelector('.cadastro-container button').onclick = function() {
+  document.querySelector('.cadastro-container button').onclick = function () {
     window.location.href = 'eventos-cadastro.html';
   };
 });
-
-
 

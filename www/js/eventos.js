@@ -3,16 +3,16 @@ document.getElementById('eventoForm').addEventListener('submit', function(event)
   
   const titulo = document.getElementById('titulo').value;
   const descricao = document.getElementById('descricao').value;
+  const promotor = document.getElementById('promotor').value;
   const local = document.getElementById('local').value;
   const estado = document.getElementById('estado').value;
   const data = document.getElementById('data').value;
+  const horario = document.getElementById('horario').value;
   const telefone = document.getElementById('telefone').value;
   const email = document.getElementById('email').value;
   const link = document.getElementById('link').value;
-  const horario = document.getElementById('horario').value;
-  const promotor = document.getElementById('promotor').value;
   
-  if (!titulo || !descricao || !local || !estado || !data || !telefone || !email || !link || !horario || !promotor) {
+  if (!titulo || !descricao || !promotor || !local || !estado || !data || !horario || !telefone || !email || !link) {
     alert('Todos os campos são obrigatórios.');
     return;
   }
@@ -23,14 +23,14 @@ document.getElementById('eventoForm').addEventListener('submit', function(event)
   const evento = {
     titulo,
     descricao,
+    promotor,
     local,
     estado,
-    data: dataFormatada,
+    data: dataFormatada,    
+    horario,
     telefone,
     email,
-    link,
-    horario,
-    promotor
+    link
   };
 
   // Recupera eventos salvos ou cria um array vazio

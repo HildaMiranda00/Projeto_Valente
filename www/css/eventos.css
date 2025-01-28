@@ -83,13 +83,13 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 0rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
 
 .filtro-select {
-    padding: 0.5rem;
+    padding: 0.25rem;
     font-size: 1rem;
     color: var(--branco);
     background-color: var(--marrom);
@@ -103,22 +103,39 @@ html, body {
     background-color: var(--branco);
     border: 2px solid var(--verde); /* Bordas verdes */
     border-radius: 8px; /* Arredonda as bordas */
-    padding: 1.5rem;
+    padding: 1rem; /* Reduzido de 1.5rem para 1rem */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    margin-bottom: 1rem; /* Espaçamento entre os cards */
+    margin-bottom: 1rem; /* Reduzido de 1.5rem para 1rem */
     width: 18rem; /* Largura fixa do card */
     transition: all 0.3s ease;
 }
 
+/* Ajustes nos elementos internos do .evento */
+.evento h1,
+.evento h2,
+.evento p {
+    margin: 0.5rem 0; /* Diminui o espaçamento vertical */
+}
+
+.evento img {
+    margin-bottom: 0.5rem; /* Reduz espaço abaixo da imagem */
+    width: 100%; /* Garante que a imagem não ultrapasse a largura do card */
+    height: auto; /* Mantém a proporção */
+}
+
+#imgEvento {
+    width: 100%; /* Garante que a imagem ocupe toda a largura do card */
+    height: 5rem; /* Altura fixa */
+    object-fit: cover; /* Corta a imagem para ajustar à altura e largura sem distorcer */
+    border-radius: 8px 8px 0 0; /* Mantém os cantos arredondados na parte superior */
+}
 /* Exibição dos eventos */
 #eventosList {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem; /* Espaçamento entre os cards */
-    padding-bottom: 2rem; /* Espaço extra na parte inferior para garantir que o último card não fique colado */
-    margin-bottom: 3rem; /* Evita que o conteúdo fique colado ao rodapé */
-    
+    padding-bottom: 1rem; /* Espaço extra na parte inferior para garantir que o último card não fique colado */
+       
 }
 
 #nenhumEvento {
@@ -132,4 +149,10 @@ html, body {
     text-align: center; 
     background-color: var(--bege); 
     border-radius: 8px;
+}
+
+a {
+    text-decoration: none; 
+    color: var(--marrom);
+    cursor: pointer;       
 }
