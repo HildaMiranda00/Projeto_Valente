@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+    --branco: #ffff;
+    --bege: #F9F5E9;
+    --marrom: #4D352D;
+    --rosa: #E291A3;
+    --laranja: #FAB958;
+    --azul: #65B6DB;
+    --verde: #78C19E;
+    --font-size-base: 1rem;
+}
+
+/* Garante que a página ocupe toda a viewport */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bege);
+    color: var(--marrom);
+    font-size: var(--font-size-base);
+    font-family: Arial, sans-serif;
+}
+
+/* Container principal com a imagem e texto */
+.eventos-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+/* Estilo da imagem */
+.eventos-image {
+    width: 30%;
+    height: auto;
+}
+
+/* Estilo do container de texto */
+.eventos-text {
+    text-align: left;
+}
+
+/* Título principal */
+.eventos-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 0.5rem;
+  
+}
+
+/* Contêiner interno para centralizar os campos do formulário */
+.form-container {
+    width: 100%; /* Garante que ocupe todo o espaço do formulário */
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* Estilos gerais para os campos */
+.campo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    text-align: left; /* Garante alinhamento dos títulos à esquerda */
+}
+
+label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--verde);
+    margin-bottom: 0.2rem;
+}
+
+input, textarea, select {
+    width: calc(100% - 2rem); /* Garante margens internas */
+    margin: 0 auto; /* Centraliza o conteúdo */
+    padding: 1rem;
+    font-size: 1rem;
+    border: 2px solid var(--verde);
+    border-radius: 0.25rem;
+    background-color: var(--branco);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+ 
+}
+
+textarea {
+    resize: vertical; /* Garante que o campo possa ser redimensionado verticalmente */
+}
+
+#descricao{
+   height: 6rem;
+}
+
+#estado{
+    width: 8.1rem;
+}
+
+
+/* Alinhamento horizontal para Estado e Data */
+.campo-horizontal {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.campo-horizontal .campo {
+    flex: 1; /* Divide o espaço igualmente */
+}
+
+/* Estilo do botão */
+button {
+    height: 2rem;
+    padding: 1.5rem 2rem; /* Remove o padding vertical e mantém o horizontal */
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: var(--verde);
+    color: var(--branco);
+    border: none;
+    cursor: pointer;
+    border: 1px solid var(--branco); /* Contorno fino branco */
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+    margin-top: 0.3rem;
+    margin-bottom: 3rem;
+
+    /* Garante o alinhamento do texto no centro */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button:hover {
+    background-color: var(--rosa);
+}
