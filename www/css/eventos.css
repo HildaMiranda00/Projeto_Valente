@@ -118,7 +118,7 @@ html, body {
 }
 
 .evento img {
-    margin-bottom: 0.5rem; /* Reduz espaço abaixo da imagem */
+    margin-bottom: 0rem; /* Reduz espaço abaixo da imagem */
     width: 100%; /* Garante que a imagem não ultrapasse a largura do card */
     height: auto; /* Mantém a proporção */
 }
@@ -134,7 +134,7 @@ html, body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding-bottom: 1rem; /* Espaço extra na parte inferior para garantir que o último card não fique colado */
+    padding-bottom: 2rem; /* Espaço extra na parte inferior para garantir que o último card não fique colado */
        
 }
 
