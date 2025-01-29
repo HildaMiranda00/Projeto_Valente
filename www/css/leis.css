@@ -27,6 +27,25 @@ html, body {
     overflow-y: auto;  /* Permite rolagem vertical */
 }
 
+/* Filtro de Leis */
+.filtro-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.filtro-select {
+    padding: 0.5rem;
+    font-size: 1rem;
+    color: var(--branco);
+    background-color: var(--marrom);
+    border: none;
+    border-radius: 8px;
+    width: 18rem; /* Ajuste na largura */
+    cursor: pointer;
+}
 
 /* Contêiner principal que envolve todo o conteúdo */
 .page-container {
@@ -172,77 +191,11 @@ html, body {
     transition: color 0.2s, border-bottom 0.2s;
 }
 
-
 .law-link:hover {
     color: var(--verde);
     border-bottom: 1px solid var(--verde);
 }
 
-
-/* Estilização do contêiner de filtros */
-.filter {
-    display: flex;
-    justify-content: flex-start; /* Coloca os itens na mesma linha */
-    align-items: flex-start; /* Alinha os itens no topo */
-    gap: 1rem; /* Espaço entre o título e os botões */
-    margin: 2rem 0;
-}
-
-/* Estilização do título "Filtro:" */
-.filter-title {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: var(--marrom);
-    margin: 0;
-}
-
-/* Contêiner para os botões */
-.filter-buttons {
-    display: flex;
-    flex-direction: column; /* Empilha os botões verticalmente */
-    gap: 0.5rem; /* Espaço entre os botões */
-}
-
-/* Estilização dos botões de filtro */
-.filter button {
-    background-color: var(--marrom);
-    color: var(--branco);
-    border: none;
-    border-radius: 6px;
-    padding: 6px 12px; /* Botões menores */
-    font-size: 0.9rem; /* Reduz o tamanho da fonte */
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-/* Efeito de hover nos botões */
-.filter button:hover {
-    background-color: var(--laranja);
-    transform: scale(1.05);
-}
-
-/* Efeito de clique */
-.filter button:active {
-    background-color: var(--laranja);
-    transform: scale(0.95);
-}
-
-/* Responsividade: mantém os botões empilhados em telas pequenas */
-@media (max-width: 480px) {
-    .filter {
-        flex-direction: column; /* Alinha os itens verticalmente em telas pequenas */
-        align-items: center;
-    }
-
-    .filter-buttons {
-        margin-top: 1rem; /* Adiciona espaço entre o título e os botões */
-    }
-
-    .filter button {
-        min-width: 120px;
-    }
-}
 
 
 

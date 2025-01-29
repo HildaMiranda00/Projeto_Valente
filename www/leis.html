@@ -20,16 +20,24 @@
       </div>
     </div>
 
-    <!-- Botões para filtrar os cards -->
-    <div class="filter">
-      <h3 class="filter-title">Filtro:</h3>
-      <button onclick="filterCards('victim')">Proteção à Vítima</button>
-      <button onclick="filterCards('aggressor')">Punições ao Agressor</button>
-      <button onclick="filterCards('all')">Mostrar Todos</button>
+    <!-- Filtro de Leis -->
+    <div class="filtro-container">
+      <select id="filtroLeis" class="filtro-select" onchange="filterCards()">
+        <option value="all">Mostrar Todas</option>
+        <option value="victim">Proteção à Vítima</option>
+        <option value="aggressor">Punições ao Agressor</option>
+        <option value="action">Leis em Ação</option>
+      </select>
     </div>
 
     <!-- Seção de leis dinâmicas -->
     <div class="leis-dinamicas">
+
+      <div class="law-card action">
+        <h2 class="law-title">"Leis sendo aplicadas na proteção infantil!"</h2>
+        <p><strong>Leis em Ação:</strong> Casos reais de aplicação das leis de proteção infantil.</p>
+        <a class="law-link" href="#" target="_blank">Veja Mais</a>
+      </div>
 
         <!-- Proteção à Vítima -->
         <div class="law-card victim">
@@ -56,30 +64,23 @@
           <p><strong>Punição ao Agressor:</strong> Quem comete abuso sexual contra menores de 14 anos pode ser condenado a reclusão de 8 a 15 anos, conforme o Art. 217-A do Código Penal.</p>
           <a class="law-link" href="https://www.planalto.gov.br/ccivil_03/decreto-lei/del2848compilado.htm" target="_blank">Veja Mais</a>
         </div>
-      
-      </div>
-      
+       
+         <!-- Leis em Ação -->
+
+        <div class="law-card action">
+          <h2 class="law-title">"Campanhas de conscientização são obrigatórias nas escolas!"</h2>
+          <p><strong>Leis em Ação:</strong> A Lei Nº 14.164/2021 determina que escolas devem realizar atividades educativas contra a violência infantil.</p>
+          <a class="law-link" href="https://www.planalto.gov.br/ccivil_03/_ato2021-2022/2021/lei/l14164.htm" target="_blank">Veja Mais</a>
+        </div>
     </div> 
   </div>
 
-  <!-- Script para filtrar os cards -->
-<script>
-  function filterCards(category) {
-    const cards = document.querySelectorAll('.law-card');
-    cards.forEach(card => {
-      if (category === 'all' || card.classList.contains(category)) {
-        card.style.display = 'block';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-  }
-</script>
+  
 
   <!-- Scripts -->
   <script src="./js/routes.js"></script>
   <script src="./js/main-bar.js"></script>
-  <script src="./js/leis.js"></script>
+  <script src="./js/leis1.js"></script>
   
 
 </body>
