@@ -9,10 +9,23 @@ document.getElementById('eventoForm').addEventListener('submit', function(event)
   const estado = document.getElementById('estado').value;
   const data = document.getElementById('data').value;
   const horario = document.getElementById('horario').value;
-  const telefone = document.getElementById('telefone').value;
+  let telefone = document.getElementById('telefone').value.replace(/\D/g, ''); // Remove caracteres não numéricos
   const email = document.getElementById('email').value;
   const link = document.getElementById('link').value;
   const imagemInput = document.getElementById('imagem');
+
+  // Validação do telefone
+  if (telefone && (telefone.length < 10 || telefone.length > 11)) {
+    alert('O telefone deve ter 10 ou 11 dígitos (incluindo DDD).');
+    return;
+  }
+
+  // Formatação do telefone
+  if (telefone.length === 10) {
+    telefone = `(${telefone.slice(0, 2)}) ${telefone.slice(2, 6)}-${telefone.slice(6)}`;
+  } else if (telefone.length === 11) {
+    telefone = `(${telefone.slice(0, 2)}) ${telefone.slice(2, 7)}-${telefone.slice(7)}`;
+  }
 
   // Verificação dos campos obrigatórios
   if (!titulo || !descricao || !promotor || !local || !estado || !data || !horario || (!email && !telefone)) {
