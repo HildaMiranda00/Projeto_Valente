@@ -15,6 +15,7 @@
 html, body {
     margin: 0;
     padding: 0;
+    min-height: 100vh; /* Garante que o conteúdo ocupe toda a altura da janela */
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -22,6 +23,16 @@ html, body {
     color: var(--marrom);
     font-size: var(--font-size-base);
     font-family: Arial, sans-serif;
+    overflow-x: hidden; /* Evita rolagem horizontal */
+    overflow-y: auto;  /* Permite rolagem vertical */
+}
+
+/* Contêiner principal que envolve todo o conteúdo */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Garante que o conteúdo preencha o espaço restante */
+    padding-bottom: 4rem; /* Reservar espaço para o menu fixo */
 }
 
 /* Container principal com a imagem e texto */
@@ -109,5 +120,61 @@ html, body {
     transition: background-color 0.3s ease;
 }
 
+/* Estilização dos cartões de leis */
+.leis-dinamicas {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 2rem;
+}
+
+
+/* Define o estilo do cartão individual de cada lei */
+.law-card {
+    background-color: var(--branco);
+    margin: 8px 0;
+    border: 2px solid var(--laranja);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+
+/* Define o comportamento do cartão ao passar o mouse */
+.law-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);/* Aumenta a sombra para destacar o cartão */
+}
+
+
+.law-title {
+    font-size: 1.5rem;
+    color: var(--marrom);
+    margin-bottom: 0.5rem;
+}
+
+
+.law-description {
+    font-size: 1rem;
+    color: var(--marrom);
+    margin-bottom: 1rem;
+}
+
+
+.law-link {
+    font-size: 1rem;
+    color: var(--azul);
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 1px solid var(--azul);
+    transition: color 0.2s, border-bottom 0.2s;
+}
+
+
+.law-link:hover {
+    color: var(--verde);
+    border-bottom: 1px solid var(--verde);
+}
 
 
