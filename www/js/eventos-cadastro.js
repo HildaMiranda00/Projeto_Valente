@@ -12,15 +12,15 @@ document.getElementById('eventoForm').addEventListener('submit', function(event)
   const email = document.getElementById('email').value;
   const link = document.getElementById('link').value;
 
-  if (!titulo || !descricao || !promotor || !local || !estado || !data || !horario || !telefone || !email || !link) {
-    alert('Todos os campos são obrigatórios.');
+  if (!titulo || !descricao || !promotor || !local || !estado || !data || !horario || (!email && !telefone)) {
+    alert('Todos os campos obrigatórios devem ser preenchidos. Preencha o telefone ou o e-mail.');
     return;
   }
 
-  // Verifica se a data do evento já passou
-  const dataEvento = new Date(data);
+  // Ajusta a data para evitar problemas de fuso horário
+  const dataEvento = new Date(data + 'T00:00:00');
   const hoje = new Date();
-  hoje.setHours(0, 0, 0, 0); // Remove a parte da hora para comparação apenas de datas
+  hoje.setHours(0, 0, 0, 0);
 
   if (dataEvento < hoje) {
     alert('A data do evento não pode ser anterior à data atual.');
@@ -33,23 +33,18 @@ document.getElementById('eventoForm').addEventListener('submit', function(event)
     promotor,
     local,
     estado,
-    data, // Mantém formato ISO (yyyy-mm-dd)
+    data: dataEvento.toISOString().split('T')[0], // Garante armazenamento correto
     horario,
     telefone,
     email,
     link
   };
 
-  // Recupera eventos salvos ou cria um array vazio
   let eventos = JSON.parse(localStorage.getItem('eventos')) || [];
-  
-  // Adiciona o novo evento ao array
   eventos.push(evento);
-
-  // Salva novamente no localStorage
   localStorage.setItem('eventos', JSON.stringify(eventos));
 
   alert('Evento cadastrado com sucesso!');
-  window.location.href = 'eventos.html'; // Redireciona para a página de exibição
+  window.location.href = 'eventos.html';
 });
 

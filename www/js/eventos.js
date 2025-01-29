@@ -1,23 +1,36 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // Recupera os eventos armazenados no localStorage
   const eventos = JSON.parse(localStorage.getItem('eventos')) || [];
 
-  // Filtra eventos com base no estado e na data atual
   function filtrarEventos() {
     const estadoFiltro = document.getElementById('filtroEstado').value;
     const dataAtual = new Date();
-    dataAtual.setHours(0, 0, 0, 0); // Remove a parte da hora para comparação
-
+    dataAtual.setHours(0, 0, 0, 0);
+  
     const eventosFiltrados = eventos.filter(evento => {
-      // Converte a data armazenada (formato ISO) para objeto Date
-      const dataEvento = new Date(evento.data);
+      const partesData = evento.data.split('-');
+      const dataEvento = new Date();
+      dataEvento.setFullYear(parseInt(partesData[0]), parseInt(partesData[1]) - 1, parseInt(partesData[2]));
+      dataEvento.setHours(0, 0, 0, 0);
       return (!estadoFiltro || evento.estado === estadoFiltro) && dataEvento >= dataAtual;
     });
-
+  
+    eventosFiltrados.sort((a, b) => {
+      const dataA = new Date();
+      const partesA = a.data.split('-');
+      dataA.setFullYear(parseInt(partesA[0]), parseInt(partesA[1]) - 1, parseInt(partesA[2]));
+      dataA.setHours(0, 0, 0, 0);
+      
+      const dataB = new Date();
+      const partesB = b.data.split('-');
+      dataB.setFullYear(parseInt(partesB[0]), parseInt(partesB[1]) - 1, parseInt(partesB[2]));
+      dataB.setHours(0, 0, 0, 0);
+      
+      return dataA - dataB;
+    });
+  
     exibirEventos(eventosFiltrados);
   }
 
-  // Exibe eventos na tela
   function exibirEventos(eventos) {
     const eventosList = document.getElementById('eventosList');
     eventosList.innerHTML = '';
@@ -30,13 +43,10 @@ document.addEventListener('DOMContentLoaded', function () {
     eventos.forEach(evento => {
       const divEvento = document.createElement('div');
       divEvento.classList.add('evento');
-
-      // Usa uma imagem padrão se nenhuma imagem for fornecida
       const imagemEvento = evento.imagem || 'img/tela_eventos_imagem_perfil.png';
 
-      // Converte a data para formato brasileiro ao exibir
-      const dataEvento = new Date(evento.data);
-      const dataFormatada = dataEvento.toLocaleDateString('pt-BR');
+      const partesData = evento.data.split('-');
+      const dataFormatada = `${partesData[2]}/${partesData[1]}/${partesData[0]}`;
 
       divEvento.innerHTML = `
         <img src="${imagemEvento}" alt="Imagem do evento" id="imgEvento" class="card-image">
@@ -56,15 +66,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Adiciona evento para filtrar ao selecionar estado
   document.getElementById('filtroEstado').addEventListener('change', filtrarEventos);
-
-  // Exibe todos os eventos inicialmente
   filtrarEventos();
 
-  // Atualiza o link de redirecionamento para a página de cadastro
   document.querySelector('.cadastro-container button').onclick = function () {
     window.location.href = 'eventos-cadastro.html';
   };
 });
-
