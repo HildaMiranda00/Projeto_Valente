@@ -1,19 +1,22 @@
 document.getElementById('eventoForm').addEventListener('submit', function(event) { 
   event.preventDefault();
   
+  // Coletando os dados do formulário
   const titulo = document.getElementById('titulo').value;
   const descricao = document.getElementById('descricao').value;
   const promotor = document.getElementById('promotor').value;
   const local = document.getElementById('local').value;
   const estado = document.getElementById('estado').value;
-  const data = document.getElementById('data').value; // Mantém formato ISO
+  const data = document.getElementById('data').value;
   const horario = document.getElementById('horario').value;
   const telefone = document.getElementById('telefone').value;
   const email = document.getElementById('email').value;
   const link = document.getElementById('link').value;
+  const imagemInput = document.getElementById('imagem');
 
+  // Verificação dos campos obrigatórios
   if (!titulo || !descricao || !promotor || !local || !estado || !data || !horario || (!email && !telefone)) {
-    alert('Todos os campos obrigatórios devem ser preenchidos. Preencha o telefone ou o e-mail.');
+    alert('Todos os campos obrigatórios devem ser preenchidos. Preencha o telefone ou o e-mail para contato.');
     return;
   }
 
@@ -27,24 +30,52 @@ document.getElementById('eventoForm').addEventListener('submit', function(event)
     return;
   }
 
-  const evento = {
-    titulo,
-    descricao,
-    promotor,
-    local,
-    estado,
-    data: dataEvento.toISOString().split('T')[0], // Garante armazenamento correto
-    horario,
-    telefone,
-    email,
-    link
-  };
+  // Função para converter imagem em Base64
+  function converterParaBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+    });
+  }
 
-  let eventos = JSON.parse(localStorage.getItem('eventos')) || [];
-  eventos.push(evento);
-  localStorage.setItem('eventos', JSON.stringify(eventos));
+  if (imagemInput.files.length > 0) {
+    converterParaBase64(imagemInput.files[0]).then(imagemBase64 => {
+      salvarEvento(imagemBase64);
+    }).catch(error => {
+      console.error('Erro ao processar a imagem:', error);
+      salvarEvento('');
+    });
+  } else {
+    salvarEvento('');
+  }
 
-  alert('Evento cadastrado com sucesso!');
-  window.location.href = 'eventos.html';
+  function salvarEvento(imagemBase64) {
+    // Criando o objeto do evento
+    const evento = {
+      titulo,
+      descricao,
+      promotor,
+      local,
+      estado,
+      data: dataEvento.toISOString().split('T')[0],
+      horario,
+      telefone,
+      email,
+      link,
+      imagem: imagemBase64 // Agora a imagem é armazenada em Base64
+    };
+
+    // Recuperando os eventos do localStorage e adicionando o novo evento
+    let eventos = JSON.parse(localStorage.getItem('eventos')) || [];
+    eventos.push(evento);
+
+    // Atualizando o localStorage com a lista de eventos
+    localStorage.setItem('eventos', JSON.stringify(eventos));
+
+    // Mensagem de sucesso e redirecionamento
+    alert('Evento cadastrado com sucesso!');
+    window.location.href = 'eventos.html';
+  }
 });
-

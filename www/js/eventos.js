@@ -43,7 +43,9 @@ document.addEventListener('DOMContentLoaded', function () {
     eventos.forEach(evento => {
       const divEvento = document.createElement('div');
       divEvento.classList.add('evento');
-      const imagemEvento = evento.imagem || 'img/tela_eventos_imagem_perfil.png';
+      
+      // Agora a imagem é um Base64 válido, então usamos diretamente no src
+      const imagemEvento = evento.imagem ? evento.imagem : 'img/tela_eventos_imagem_perfil.png';
 
       const partesData = evento.data.split('-');
       const dataFormatada = `${partesData[2]}/${partesData[1]}/${partesData[0]}`;
