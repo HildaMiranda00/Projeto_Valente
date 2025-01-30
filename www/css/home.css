@@ -50,8 +50,24 @@ html, body {
 .subtitle {
     font-size: 1rem;
     color: var(--marrom);
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     font-family: Arial, sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: var(--azul);
+    cursor: pointer;
+}
+a:hover {
+    color: var(--marrom); 
+}
+
+.subtitle-suporte {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
 }
 
 /* Botões de navegação */

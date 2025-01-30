@@ -1,0 +1,94 @@
+:root {
+    --branco: #ffff;
+    --bege: #F9F5E9;
+    --marrom: #4D352D;
+    --rosa: #E291A3;
+    --laranja: #FAB958;
+    --azul: #65B6DB;
+    --verde: #78C19E;
+    --font-size-base: 1rem; /* Tamanho base da fonte */
+}
+
+/* Garante que a página ocupe toda a viewport */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bege);
+    font-size: 1rem;
+    color: var(--azul);
+    font-family: Arial, sans-serif;
+    justify-content: center;  /* Centraliza o conteúdo verticalmente */
+}
+
+/* Centraliza todo o conteúdo da página */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;  /* Usa a altura completa da tela */
+    text-align: center;
+    padding: 2rem;
+}
+
+.logo {
+    width: 16rem; /* Usando rem para largura proporcional */
+    height: auto;
+}
+
+/* Frase ou subtítulo */
+.subtitle {
+    margin-bottom: 1.5rem;
+}
+
+.email-valente {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: none;
+    color: var(--azul);
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: 2px solid var(--azul);
+}
+
+/* Centralizando o conteúdo do ícone e do subtítulo */
+.info-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.subtitle-2 {
+    margin-top: 1rem;  /* Espaço entre o ícone e o subtítulo */
+}
+
+/* Estilo para o ícone de home */
+.icone-home {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    padding: 10px;
+    z-index: 999;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: var(--azul);
+    cursor: pointer;
+    position: relative;
+    bottom: 2rem; /* Ajuste a distância de acordo com o seu layout */
+}
+
+.icone-home:hover {
+    background-color: var(--rosa);  
+}
+
+.icone-home img {
+    width: 3rem;
+    height: 3rem;
+}

@@ -5,37 +5,37 @@ document.addEventListener('DOMContentLoaded', function () {
 
             <a href="home.html" class="link" data-page="home">
                 <span class="icon">
-                    <img src="img/footer_home.svg" alt="Ícone de alerta" class="svg-icon">
+                    <img src="img/footer_home.svg" alt="Ícone home" class="svg-icon">
                 </span>
             </a>
 
             <a href="eventos.html" class="link" data-page="eventos">
                 <span class="icon">
-                    <img src="img/footer_eventos.svg" alt="Ícone de eventos" class="svg-icon">
+                    <img src="img/footer_eventos.svg" alt="Ícone eventos" class="svg-icon">
                 </span>
             </a>
 
             <a href="social.html" class="link" data-page="social">
                 <span class="icon">
-                    <img src="img/footer_social.svg" alt="Ícone de social" class="svg-icon">
+                    <img src="img/footer_social.svg" alt="Ícone comunidade" class="svg-icon">
                 </span>
             </a>
 
              <a href="disque.html" class="link" data-page="disque">
                 <span class="icon">
-                    <img src="img/footer_disque.svg" alt="Ícone de alerta" class="svg-icon">
+                    <img src="img/footer_disque.svg" alt="Ícone denuncie" class="svg-icon">
                 </span>
             </a>
 
             <a href="leis.html" class="link" data-page="leis">
                 <span class="icon">
-                    <img src="img/footer_leis.svg" alt="Ícone de leis" class="svg-icon">
+                    <img src="img/footer_leis.svg" alt="Ícone leis" class="svg-icon">
                 </span>
             </a>
 
             <a href="chatbot.html" class="link" data-page="chatbot">
                 <span class="icon">
-                    <img src="img/footer_bot.svg" alt="Ícone de chatbot" class="svg-icon">
+                    <img src="img/footer_bot.svg" alt="Ícone chatbot" class="svg-icon">
                 </span>
             </a>
 
