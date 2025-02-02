@@ -8,54 +8,103 @@
     <link rel="stylesheet" href="css/chatbot.css">
 </head>
 <body>
-    <header>
-        <img src="img/borboleta.svg" alt="Imagem" class="chatbot-image">
-        <h1>Chatbot</h1>
-    </header>
-    <div class="container">
-        <label for="context">Contexto:</label>
-        <textarea id="context" placeholder="Insira o contexto aqui..." rows="5"></textarea>
-
-        <label for="question">Pergunta:</label>
-        <textarea id="question" placeholder="Insira sua pergunta aqui..." rows="2"></textarea>
-
-        <button id="submit-btn" type="button">Perguntar</button>
-        <div id="response"></div>
+    <div class="chat-container">
+        <div class="header">
+            <h1>Bot</h1>
+        </div>
+        <div class="chat-content">
+            <!-- Mensagem inicial do bot -->
+            <div class="chat-message bot-message">
+                <img src="img/borboleta.svg" alt="Bot">
+                <div class="message-bubble">Oi, como posso ajudar?</div>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" placeholder="Mensagem" id="chat-input">
+            <button id="send-button">Enviar</button>
+        </div>
     </div>
-    <footer>
-        <p>Valente &copy; 2025</p>
-    </footer>
-
-    <script src="lib/jquery-3.7.0.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            $('#submit-btn').off('click').on('click', function () {
-                const context = $('#context').val();
-                const question = $('#question').val();
+        const chatInput = document.querySelector('#chat-input');
+        const sendButton = document.querySelector('#send-button');
+        const chatContent = document.querySelector('.chat-content');
 
-                if (!context || !question) {
-                    $('#response').html('<p>Por favor, insira tanto o contexto quanto a pergunta.</p>');
-                    return;
+        sendButton.addEventListener('click', async () => {
+            const userMessage = chatInput.value.trim();
+            if (!userMessage) return; // Não enviar mensagens vazias
+
+            // Adicionar a mensagem do usuário ao chat
+            const userMessageDiv = document.createElement('div');
+            userMessageDiv.classList.add('chat-message', 'user-message');
+            userMessageDiv.innerHTML = `
+                <div class="message-bubble">${userMessage}</div>
+            `;
+            chatContent.appendChild(userMessageDiv);
+
+            // Limpar o campo de entrada
+            chatInput.value = '';
+
+            // Mostrar um indicador de carregamento
+            const loadingDiv = document.createElement('div');
+            loadingDiv.classList.add('chat-message', 'bot-message');
+            loadingDiv.innerHTML = `
+                <img src="img/borboleta.svg" alt="Bot">
+                <div class="message-bubble">Processando...</div>
+            `;
+            chatContent.appendChild(loadingDiv);
+
+            // Rolagem automática para a última mensagem
+            chatContent.scrollTop = chatContent.scrollHeight;
+
+            try {
+                // Enviar a mensagem para o servidor
+                const response = await fetch('http://127.0.0.1:8000/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: userMessage })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Erro na requisição: ${response.statusText}`);
                 }
 
-                $.ajax({
-                    url: 'http://10.0.2.2:8000/api/chatbot/',
-                    method: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify({ context, question }),
-                    success: function (response) {
-                        $('#response').html(`<p>Resposta: ${response.answer || 'Não foi possível obter uma resposta.'}</p>`);
-                    },
-                    error: function (error) {
-                        $('#response').html(`<p>Erro: ${error.responseJSON?.error || 'Erro desconhecido'}</p>`);
-                    }
-                });
-            });
+                const data = await response.json();
+
+                // Remover o indicador de carregamento
+                chatContent.removeChild(loadingDiv);
+
+                // Adicionar a resposta do bot ao chat
+                const botMessageDiv = document.createElement('div');
+                botMessageDiv.classList.add('chat-message', 'bot-message');
+                botMessageDiv.innerHTML = `
+                    <img src="img/borboleta.svg" alt="Bot">
+                    <div class="message-bubble">${data.response}</div>
+                `;
+                chatContent.appendChild(botMessageDiv);
+
+                // Rolagem automática para a última mensagem
+                chatContent.scrollTop = chatContent.scrollHeight;
+            } catch (error) {
+                console.error('Erro ao enviar mensagem:', error);
+
+                // Remover o indicador de carregamento
+                chatContent.removeChild(loadingDiv);
+
+                // Adicionar uma mensagem de erro ao chat
+                const errorMessageDiv = document.createElement('div');
+                errorMessageDiv.classList.add('chat-message', 'bot-message');
+                errorMessageDiv.innerHTML = `
+                    <img src="img/borboleta.svg" alt="Bot">
+                    <div class="message-bubble">Desculpe, ocorreu um erro. Tente novamente.</div>
+                `;
+                chatContent.appendChild(errorMessageDiv);
+
+                // Rolagem automática para a última mensagem
+                chatContent.scrollTop = chatContent.scrollHeight;
+            }
         });
     </script>
-
-<!-- Scripts -->
-      <script src="./js/routes.js"></script>
-      <script src="./js/main-bar.js"></script>
+    <script src="./js/routes.js"></script>
+    <script src="./js/main-bar.js"></script>
 </body>
 </html>
