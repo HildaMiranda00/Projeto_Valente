@@ -10,7 +10,7 @@
 <body>
     <div class="chat-container">
         <div class="header">
-            <h1>Bot</h1>
+            <h1>Valente - Chatbot</h1>
         </div>
         <div class="chat-content">
             <!-- Mensagem inicial do bot -->
@@ -20,90 +20,119 @@
             </div>
         </div>
         <div class="chat-input">
-            <input type="text" placeholder="Mensagem" id="chat-input">
+            <input type="text" placeholder="Envie uma pergunta" id="chat-input">
             <button id="send-button">Enviar</button>
         </div>
     </div>
     <script>
-        const chatInput = document.querySelector('#chat-input');
-        const sendButton = document.querySelector('#send-button');
-        const chatContent = document.querySelector('.chat-content');
+    const chatInput = document.querySelector('#chat-input');
+    const sendButton = document.querySelector('#send-button');
+    const chatContent = document.querySelector('.chat-content');
 
-        sendButton.addEventListener('click', async () => {
-            const userMessage = chatInput.value.trim();
-            if (!userMessage) return; // Não enviar mensagens vazias
+    // Função para salvar mensagens no localStorage
+    function saveMessages() {
+        const messages = Array.from(chatContent.children).map(msg => ({
+            type: msg.classList.contains('user-message') ? 'user' : 'bot',
+            text: msg.querySelector('.message-bubble').innerText
+        }));
+        localStorage.setItem('chatMessages', JSON.stringify(messages));
+    }
 
-            // Adicionar a mensagem do usuário ao chat
-            const userMessageDiv = document.createElement('div');
-            userMessageDiv.classList.add('chat-message', 'user-message');
-            userMessageDiv.innerHTML = `
-                <div class="message-bubble">${userMessage}</div>
+    // Função para carregar mensagens do localStorage
+    function loadMessages() {
+        const savedMessages = JSON.parse(localStorage.getItem('chatMessages')) || [];
+        savedMessages.forEach(msg => {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('chat-message', msg.type === 'user' ? 'user-message' : 'bot-message');
+            messageDiv.innerHTML = `
+                ${msg.type === 'bot' ? '<img src="img/borboleta.svg" alt="Bot">' : ''}
+                <div class="message-bubble">${msg.text}</div>
             `;
-            chatContent.appendChild(userMessageDiv);
-
-            // Limpar o campo de entrada
-            chatInput.value = '';
-
-            // Mostrar um indicador de carregamento
-            const loadingDiv = document.createElement('div');
-            loadingDiv.classList.add('chat-message', 'bot-message');
-            loadingDiv.innerHTML = `
-                <img src="img/borboleta.svg" alt="Bot">
-                <div class="message-bubble">Processando...</div>
-            `;
-            chatContent.appendChild(loadingDiv);
-
-            // Rolagem automática para a última mensagem
-            chatContent.scrollTop = chatContent.scrollHeight;
-
-            try {
-                // Enviar a mensagem para o servidor
-                const response = await fetch('http://127.0.0.1:8000/api/chat', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message: userMessage })
-                });
-
-                if (!response.ok) {
-                    throw new Error(`Erro na requisição: ${response.statusText}`);
-                }
-
-                const data = await response.json();
-
-                // Remover o indicador de carregamento
-                chatContent.removeChild(loadingDiv);
-
-                // Adicionar a resposta do bot ao chat
-                const botMessageDiv = document.createElement('div');
-                botMessageDiv.classList.add('chat-message', 'bot-message');
-                botMessageDiv.innerHTML = `
-                    <img src="img/borboleta.svg" alt="Bot">
-                    <div class="message-bubble">${data.response}</div>
-                `;
-                chatContent.appendChild(botMessageDiv);
-
-                // Rolagem automática para a última mensagem
-                chatContent.scrollTop = chatContent.scrollHeight;
-            } catch (error) {
-                console.error('Erro ao enviar mensagem:', error);
-
-                // Remover o indicador de carregamento
-                chatContent.removeChild(loadingDiv);
-
-                // Adicionar uma mensagem de erro ao chat
-                const errorMessageDiv = document.createElement('div');
-                errorMessageDiv.classList.add('chat-message', 'bot-message');
-                errorMessageDiv.innerHTML = `
-                    <img src="img/borboleta.svg" alt="Bot">
-                    <div class="message-bubble">Desculpe, ocorreu um erro. Tente novamente.</div>
-                `;
-                chatContent.appendChild(errorMessageDiv);
-
-                // Rolagem automática para a última mensagem
-                chatContent.scrollTop = chatContent.scrollHeight;
-            }
+            chatContent.appendChild(messageDiv);
         });
-    </script>
+        chatContent.scrollTop = chatContent.scrollHeight;
+    }
+
+    // Carregar mensagens salvas ao abrir a página
+    loadMessages();
+
+    sendButton.addEventListener('click', async () => {
+        const userMessage = chatInput.value.trim();
+        if (!userMessage) return;
+
+        // Adicionar a mensagem do usuário ao chat
+        const userMessageDiv = document.createElement('div');
+        userMessageDiv.classList.add('chat-message', 'user-message');
+        userMessageDiv.innerHTML = `<div class="message-bubble">${userMessage}</div>`;
+        chatContent.appendChild(userMessageDiv);
+
+        // Salvar no localStorage
+        saveMessages();
+
+        // Limpar o campo de entrada
+        chatInput.value = '';
+
+        // Mostrar um indicador de carregamento
+        const loadingDiv = document.createElement('div');
+        loadingDiv.classList.add('chat-message', 'bot-message');
+        loadingDiv.innerHTML = `
+            <img src="img/borboleta.svg" alt="Bot">
+            <div class="message-bubble">Processando...</div>
+        `;
+        chatContent.appendChild(loadingDiv);
+        chatContent.scrollTop = chatContent.scrollHeight;
+
+        try {
+            // Enviar a mensagem para o servidor
+            const response = await fetch('https://10.0.2.2:8000/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: userMessage })
+            });
+
+            if (!response.ok) throw new Error(`Erro na requisição: ${response.statusText}`);
+
+            const data = await response.json();
+
+            // Remover o indicador de carregamento
+            chatContent.removeChild(loadingDiv);
+
+            // Adicionar a resposta do bot ao chat
+            const botMessageDiv = document.createElement('div');
+            botMessageDiv.classList.add('chat-message', 'bot-message');
+            botMessageDiv.innerHTML = `
+                <img src="img/borboleta.svg" alt="Bot">
+                <div class="message-bubble">${data.response}</div>
+            `;
+            chatContent.appendChild(botMessageDiv);
+
+            // Salvar no localStorage
+            saveMessages();
+
+            chatContent.scrollTop = chatContent.scrollHeight;
+        } catch (error) {
+            console.error('Erro ao enviar mensagem:', error);
+
+            // Remover o indicador de carregamento
+            chatContent.removeChild(loadingDiv);
+
+            // Adicionar uma mensagem de erro ao chat
+            const errorMessageDiv = document.createElement('div');
+            errorMessageDiv.classList.add('chat-message', 'bot-message');
+            errorMessageDiv.innerHTML = `
+                <img src="img/borboleta.svg" alt="Bot">
+                <div class="message-bubble">Desculpe, ocorreu um erro. Tente novamente.</div>
+            `;
+            chatContent.appendChild(errorMessageDiv);
+
+            // Salvar no localStorage
+            saveMessages();
+
+            chatContent.scrollTop = chatContent.scrollHeight;
+        }
+    });
+</script>
+
     <script src="./js/routes.js"></script>
     <script src="./js/main-bar.js"></script>
 </body>
