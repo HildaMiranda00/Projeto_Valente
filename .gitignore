@@ -40,3 +40,5 @@ build/
 *.key
 *.crt
 __pycache__/
+
+backend/chatbot/model/

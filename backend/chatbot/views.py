@@ -251,6 +251,15 @@ default_responses = {
     ),
 }
 
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+
+# Dicionário de respostas padrão
+default_responses = {
+    "abuso": "Se você deseja denunciar abuso sexual infantil, ligue para o Disque 100. O serviço é gratuito e funciona 24 horas.",
+    "denúncia": "Para fazer uma denúncia, entre em contato com o Disque 100 ou procure o Conselho Tutelar mais próximo.",
+}
+
 @csrf_exempt
 def chat(request):
     if request.method == 'POST':
@@ -266,7 +275,8 @@ def chat(request):
             if key in user_message.lower():
                 return JsonResponse({'response': response})
 
-        # Contexto detalhado para o modelo
+        # Comentado: Parte do modelo desativada
+        /*
         context = (
             "Ajudar pessoas a denunciar abuso sexual infantil. "
             "O número do Disque Denúncia para relatar abuso sexual em crianças é o Disque 100. "
@@ -275,7 +285,6 @@ def chat(request):
         )
 
         try:
-            # Tokenizar a entrada
             inputs = tokenizer(
                 user_message,
                 context,
@@ -285,25 +294,24 @@ def chat(request):
                 padding="max_length"
             )
 
-            # Gerar a resposta do modelo
             with torch.no_grad():
                 outputs = model(**inputs)
 
-            # Extrair a resposta
             answer_start = torch.argmax(outputs.start_logits)
             answer_end = torch.argmax(outputs.end_logits) + 1
             answer_ids = inputs["input_ids"][0][answer_start:answer_end]
             answer = tokenizer.decode(answer_ids, skip_special_tokens=True)
 
-            # Validar a resposta
             if not answer:
                 answer = "Desculpe, não consegui encontrar uma resposta. Por favor, reformule sua pergunta."
 
-            # Retornar a resposta em JSON
             return JsonResponse({'response': answer})
 
         except Exception as e:
             print(f"Erro ao processar a mensagem: {e}")
             return JsonResponse({'response': 'Ocorreu um erro ao processar sua mensagem. Tente novamente.'}, status=500)
+        */
+
+        return JsonResponse({'response': 'Desculpe, não consegui encontrar uma resposta. Tente reformular sua pergunta.'})
 
     return JsonResponse({'error': 'Método não permitido'}, status=405)
