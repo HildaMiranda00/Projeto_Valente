@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Página inicial do site com navegação simples e eficaz.">
+  <meta name="description" content="Página de discagem para denúncias.">
   <title>Denuncie</title>
   <link rel="stylesheet" href="./css/main-bar.css">
   <link rel="stylesheet" href="./css/disque.css">
@@ -13,13 +13,99 @@
   <div class="disque-container">
     <img src="img/tela_denuncia_circulo_coracao_rosa.svg" alt="Imagem" class="disque-image">
     <div class="disque-text">
-      <h1 class="disque-title">Denuncie</h1>
-      <p class="disque-subtitle">Disque e denúncie. Click para prosseguir com o atendimento</p>
+      <h1 class="disque-title">Denúncia e Penalidades</h1>
+      <p class="disque-subtitle">Clique no ícone para prosseguir com a denúncia.</p>
     </div>
+  </div>
+
+  <!-- Botões de discagem com ícones -->
+   <div class="disque-card">
+    <button class="disque-button" onclick="ligar('100')">
+      <img src="img/tela_denuncie_telefone-2.svg" alt="Disque 100">
+    </button>
+
+    <div class="denuncie-text">
+      <h1 class="denuncie-title">100 Disque Direitos Humanos</h1>
+      <p class="denuncie-subtitle">Canal oficial de denúncias de violação de direitos humanos no Brasil, incluindo abuso, exploração sexual, violência física e psicológica, maus-tratos e pornografia infantil.</p>
+      <a class= "link" href="https://atendelibras.mdh.gov.br/acesso" target="_blank" rel="noopener noreferrer">
+        Atendimento em Libras
+      </a>
+      <a class= "link" href="https://falabr.cgu.gov.br/web/login?idFormulario=4&tipo=1&redirect=/manifestacao/criar?idFormulario=4%26tipo=1" target="_blank" rel="noopener noreferrer">
+        Denúncia Online
+      </a>
+      <a class= "link" href="https://t.me/Direitoshumanosbrasilbot" target="_blank" rel="noopener noreferrer">
+        Telegram
+      </a>
+      
+      <a class= "link" href="https://wa.me/5561996110100" target="_blank" rel="noopener noreferrer">
+        WhatsApp
+      </a>
+
+  </div>
+</div>
+
+  <div class="disque-card">
+      <button class="disque-button" onclick="ligar('190')">
+        <img src="img/tela_denuncie_telefone-2.svg" alt="Disque 190">
+      </button>
+      <div class="denuncie-text">
+        <h1 class="denuncie-title">190 Polícia Militar</h1>
+        <p class="denuncie-subtitle">Para emergência onde existe violência em andamento ou risco imediato.</p>
+      </div>
+    </div>
+
+    <div class="disque-card">
+        <button class="disque-button" onclick="ligar('191')">
+          <img src="img/tela_denuncie_telefone-2.svg" alt="Disque 191">
+        </button>
+        <div class="denuncie-text">
+          <h1 class="denuncie-title">191 Polícia Rodoviária Federal</h1>
+          <p class="denuncie-subtitle">Para casos de tráfico de crianças e adolescentes e exploração sexual em rodovias federais.</p>
+        </div>
+      </div>
+
+      <div class="disque-card">
+          <button class="disque-button" onclick="ligar('194')">
+            <img src="img/tela_denuncie_telefone-2.svg" alt="Disque 194">
+          </button>
+
+          <div class="denuncie-text">
+            <h1 class="denuncie-title">194 Polícia Federal</h1>
+            <p class="denuncie-subtitle">Para crimes federais, como tráfico internacional de crianças e adolescentes, exploração sexual transnacional e pornografia infantil na internet.</p>
+            <a class= "link" href="https://apps.pf.gov.br/r/comunicapf/comunicapf/pagina-inicial?session=119879891603144" target="_blank" rel="noopener noreferrer"> Denúncia Online (COMUNICA PF)
+            </a>
+          </div>
+      </div>
+
+    <div class="disque-card">
+    <button class="disque-button" onclick="ligar('197')">
+      <img src="img/tela_denuncie_telefone-2.svg" alt="Disque 197">
+    </button>
+    <div class="denuncie-text">
+      <h1 class="denuncie-title">197 Polícia Civil</h1>
+      <p class="denuncie-subtitle">Para denúncias de abuso sexual, violência física, maus-tratos e pornografia infantil dentro do estado.</p>
+    </div>
+  </div> 
+
+  <div class="disque-card">
+    <div class="denuncie-text">
+      <a href="https://apps.pf.gov.br/r/comunicapf/comunicapf/pagina-inicial?session=119879891603144" target="_blank" rel="noopener noreferrer">
+        <button class="disque-button">
+          <img src="img/tela_denuncie_internet.svg" alt="SaferNet">
+        </button>
+      </a>
+
+      <h1 class="denuncie-title">SaferNet</h1>
+      <p class="denuncie-subtitle">Plataforma especializada em crimes na internet, incluindo pornografia infantil, aliciamento online e exploração sexual digital.</p>
+    </div>
+
+  </div> 
+
   </div>
 
   <!-- Scripts -->
   <script src="./js/routes.js"></script>
   <script src="./js/main-bar.js"></script>
+  <script src="./js/disque.js"></script>
 </body>
 </html>

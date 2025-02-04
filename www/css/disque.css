@@ -1,12 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 :root {
-    --branco: #ffff;
+    --branco: #fff;
     --bege: #F9F5E9;
     --marrom: #4D352D;
     --rosa: #E291A3;
     --laranja: #FAB958;
     --azul: #65B6DB;
     --verde: #78C19E;
-    --font-size-base: 1rem; /* Tamanho base da fonte */
+    --font-size-base: 1rem;
 }
 
 /* Garante que a página ocupe toda a viewport */
@@ -19,37 +21,123 @@ html, body {
     background-color: var(--bege);
     color: var(--marrom);
     font-size: var(--font-size-base);
+    font-family: Arial, sans-serif;
+    overflow-y: auto; 
+    padding-bottom: 2rem;
 }
 
-/* Container principal com a imagem e texto */
+/* Container principal */
 .disque-container {
     display: flex;
-    align-items: center; /* Alinha a imagem e os textos verticalmente no centro */
-    justify-content: center; /* Centraliza o conteúdo horizontalmente */
-    padding: 2rem; /* Adiciona espaçamento ao redor */
-    gap: 2rem; /* Espaço entre a imagem e os textos */
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    gap: 2rem;
 }
 
 /* Estilo da imagem */
 .disque-image {
-    width: 30%; 
-    height: auto; /* Mantém a proporção */
+    width: 30%;
+    height: auto;
 }
 
 /* Estilo do container de texto */
 .disque-text {
-    text-align: left; /* Alinha o texto à esquerda dentro do container */
+    text-align: left;
 }
 
 /* Título principal */
 .disque-title {
-    font-size: 2rem; /* Tamanho maior para o título */
+    font-size: 2rem;
     font-weight: bold;
-    margin: 0; /* Remove margens padrão */
+    margin: 0;
+    font-family: "Roboto", sans-serif;
 }
 
 /* Frase menor */
 .disque-subtitle {
-    font-size: 1rem; /* Tamanho menor para a frase */
-    margin-top: 0.5rem; /* Espaçamento entre o título e a frase */
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+}
+
+/* Estilo do card */
+.disque-card {
+    background-color: var(--branco); /* Fundo branco */
+    border: 2px solid var(--rosa); /* Borda rosa */
+    border-radius: 12px; /* Bordas arredondadas */
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-start; /* Alinha os itens ao topo */
+    gap: 1rem; /* Espaço entre o botão e o texto */
+    max-width: 25rem; /* Largura máxima do card */
+    margin: 0.5rem auto; /* Centraliza horizontalmente */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+a {
+    text-decoration: none; 
+    color: var(--marrom);
+    cursor: pointer;       
+}
+
+/* Define o estilo do cartão individual de cada lei */
+.law-card {
+    margin: 8px 0;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+/* Botão de discagem */
+.disque-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.disque-button img {
+    width: 3rem; /* Define o tamanho do ícone */
+    height: auto;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* .disque-button img:hover {
+    transform: scale(1.1); 
+} */
+
+/* Container do texto */
+.denuncie-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Título */
+.denuncie-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--marrom);
+    margin: 0;
+}
+
+/* Subtítulo */
+.denuncie-subtitle {
+    font-size: 0.9rem;
+    color: var(--marrom);
+    margin-top: 0.2rem;
+}
+
+.link {
+    font-size: 1rem;
+    color: var(--azul);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s, border-bottom 0.2s;
+}
+
+.link:hover {
+    color: var(--rosa);
 }
