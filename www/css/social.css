@@ -69,8 +69,8 @@ html, body {
 .card {
     display: flex;
     align-items: center;
-    background-color: #ffff;
-    margin: 10px 0;
+    background-color: var(--branco);
+    margin-bottom: 1rem; 
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -101,14 +101,14 @@ html, body {
 
 .card-title {
     font-size: 25px;
-    color: #4D352D;
+    color: var(--marrom);
     margin: 1px;
     padding-bottom: 0cm;
 }
 
 .card-description {
     font-size: 14px;
-    color: #4D352D;
+    color: var(--marrom);
     padding-top: 0px;
 }
 

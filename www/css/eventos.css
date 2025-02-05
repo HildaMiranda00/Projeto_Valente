@@ -92,13 +92,14 @@ html, body {
 }
 
 .filtro-select {
-    padding: 0.25rem;
+    padding: 0.5rem;
     font-size: 1rem;
     color: var(--branco);
     background-color: var(--marrom);
     border: none;
     border-radius: 8px;
-    width: 15rem; /* Aumenta a largura do filtro */
+    width: 18rem; 
+    cursor: pointer;
 }
 
 /* Estilos para os cards de eventos */
@@ -106,9 +107,9 @@ html, body {
     background-color: var(--branco);
     border: 2px solid var(--verde); /* Bordas verdes */
     border-radius: 8px; /* Arredonda as bordas */
-    padding: 1rem; /* Reduzido de 1.5rem para 1rem */
+    padding: 1rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    margin-bottom: 1rem; /* Reduzido de 1.5rem para 1rem */
+    margin-bottom: 1rem; 
     width: 18rem; /* Largura fixa do card */
     transition: all 0.3s ease;
 }
