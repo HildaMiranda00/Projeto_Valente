@@ -11,4 +11,7 @@
     <allow-intent href="tel:*" />
     <access origin="*" />
     <allow-navigation href="*" />
+
+    <!-- <preference name="viewport" value="width=device-width, initial-scale=1, user-scalable=yes" /> -->
+
 </widget>

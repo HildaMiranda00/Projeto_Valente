@@ -14,6 +14,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f6f4ee;
+  touch-action: manipulation !important;
 
 }
 
@@ -33,7 +34,7 @@ body {
 .header {
   text-align: center;
   padding: 15px;
-  background-color: #F9F5E9;
+  background-color: var(--bege);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
   border-radius: 0 0 30px 30px;
@@ -47,7 +48,7 @@ body {
 .header h1 {
   font-size: 25px;
   margin: 5px 0;
-  color: #4D352D;
+  color: var(--marrom);
 }
 
 .chat-content {
@@ -66,7 +67,7 @@ body {
 /* Mensagens do bot (alinhadas à esquerda) */
 .chat-message.bot-message {
   justify-content: flex-start;
-  color: #49261a;
+  color: var(--marrom);
   align-items: flex-end; /* Garante que o conteúdo fique alinhado na parte inferior */
 }
 
@@ -98,7 +99,7 @@ body {
 
 /* Estilo específico para as mensagens do bot */
 .chat-message.bot-message .message-bubble {
-  background-color: #ffffff; /* Cor de fundo para o bot */
+  background-color: var(--branco); /* Cor de fundo para o bot */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 15px 15px 15px 0px;
 }
@@ -106,7 +107,7 @@ body {
 /* Estilo específico para as mensagens do usuário */
 .chat-message.user-message .message-bubble {
   background-color: var(--verde); /* Cor de fundo para o usuário */
-  color: white; /* Cor do texto */
+  color: var(--branco); /* Cor do texto */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 15px 0px 15px 15px;
 }
@@ -115,7 +116,7 @@ body {
   display: flex;
   align-items: center;
   padding: 10px;
-  background-color: #f9f5e9;
+  background-color: var(--bege);
   margin-bottom: -0.28cm;
   margin-left: 5px;
   margin-right: 5px;
@@ -133,8 +134,8 @@ body {
 .chat-input button {
   padding: 8px 12px;
   border: none;
-  background-color: #78C19E;
-  color: white;
+  background-color: var(--verde);
+  color: var(--branco);
   cursor: pointer;
   border-radius: 15px;
 }

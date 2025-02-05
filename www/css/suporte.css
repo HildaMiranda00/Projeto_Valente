@@ -21,6 +21,7 @@ html, body {
     color: var(--azul);
     font-family: Arial, sans-serif;
     justify-content: center;  /* Centraliza o conteúdo verticalmente */
+    touch-action: manipulation !important;
 }
 
 /* Centraliza todo o conteúdo da página */

@@ -24,6 +24,7 @@ html, body {
     font-family: Arial, sans-serif;
     overflow-y: auto; 
     padding-bottom: 2rem;
+    touch-action: manipulation !important;
 }
 
 /* Container principal com a imagem e texto */
