@@ -34,9 +34,9 @@ html, body {
 }
 
 .social-image {
-    width: 35%; 
+    width: 5rem; 
     height: auto;
-    margin-left: 0cm;
+    /* margin-left: 0cm; */
 }
 
 .social-title {
@@ -108,7 +108,7 @@ html, body {
 }
 
 .card-description {
-    font-size: 14px;
+    font-size: 1rem;
     color: var(--marrom);
     padding-top: 0px;
 }

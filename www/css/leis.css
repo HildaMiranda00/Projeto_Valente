@@ -8,7 +8,7 @@
     --laranja: #FAB958;
     --azul: #65B6DB;
     --verde: #78C19E;
-    font-size: var(--font-size-base); 
+    --font-size-base: 1rem;
    
 }
 
@@ -16,7 +16,6 @@
 html, body {
     margin: 0;
     padding: 0;
-    /* min-height: 100vh;  */
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -35,8 +34,6 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* gap: 0rem; */
-    /* margin-top: 1rem; */
     margin-bottom: 1rem;
 }
 
@@ -59,38 +56,41 @@ html, body {
     padding-bottom: 4rem; /* Reservar espaço para o menu fixo */
 }
 
-/* Container principal com a imagem e texto */
 .leis-container {
     display: flex;
     align-items: center; 
-    justify-content: center; 
-    padding: 2rem; 
-    gap: 2rem; 
+    justify-content: center;
+    gap: 1rem; 
+    text-align: left;
+    padding: 20px;
 }
 
-/* Estilo da imagem */
 .leis-image {
-    width: 30%; 
-    height: auto; 
+    width: 5rem; 
+    height: auto;
 }
 
-/* Estilo do container de texto */
-.disque-text {
-    text-align: left; 
-}
-
-/* Título principal */
 .leis-title {
-    font-size: 2rem;
+    font-size: 35px; 
     font-weight: bold;
-    margin: 0; 
+    margin: 0;
     font-family: "Roboto", sans-serif;
 }
 
-/* Frase menor */
+.leis-text {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+    
+}
+
 .leis-subtitle {
-    font-size: 1rem; 
-    margin-top: 0.5rem; 
+    font-size: 1rem;
+    margin-top: 0rem; 
+    color: var(--marrom);
+    font-weight: normal;
+    margin-left: 0.1cm;
+    margin-bottom: 1rem;
 }
 
 .search-button:hover {
