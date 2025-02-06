@@ -3,6 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from transformers import AutoTokenizer, AutoModelForQuestionAnswering
 import torch
 import json
+from difflib import get_close_matches
 
 # Carregar o modelo e tokenizer treinados
 model_path = "C:/Users/Hilda/Desktop/Projeto_Valente/backend/chatbot/model"
@@ -251,6 +252,7 @@ default_responses = {
         "- Participando de ações de prevenção e educação."
     ),
 }
+
 @csrf_exempt
 def chat(request):
     if request.method == 'POST':
@@ -260,12 +262,10 @@ def chat(request):
         if not user_message:
             return JsonResponse({'response': 'Por favor, insira uma mensagem válida.'})
 
-        # Analisar palavra por palavra
-        user_words = user_message.split()
-        for word in user_words:
-            for key, response in default_responses.items():
-                if word in key.split():  # Verifica se a palavra está em alguma resposta padrão
-                    return JsonResponse({'response': response})
+        # Verificar se a mensagem do usuário corresponde a alguma chave no dicionário
+        matches = get_close_matches(user_message, default_responses.keys(), n=1, cutoff=0.6)
+        if matches:
+            return JsonResponse({'response': default_responses[matches[0]]})
 
         # Contexto detalhado para o modelo
         context = (

@@ -2,8 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes">
-    <meta name="description" content="Página Chatbot para onde pode ser tirado dúvidas interagindo com o bot">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Chatbot</title>
     <link rel="stylesheet" href="css/main-bar.css">
     <link rel="stylesheet" href="css/chatbot.css">
@@ -14,11 +13,7 @@
             <h1>Valente - Chatbot</h1>
         </div>
         <div class="chat-content">
-            <!-- Mensagem inicial do bot -->
-            <div class="chat-message bot-message">
-                <img src="img/borboleta.svg" alt="Bot">
-                <div class="message-bubble">Oi, como posso ajudar?</div>
-            </div>
+            <!-- Removida a mensagem inicial do HTML -->
         </div>
         <div class="chat-input">
             <input type="text" placeholder="Envie uma pergunta" id="chat-input">
@@ -42,6 +37,16 @@
     // Função para carregar mensagens do localStorage
     function loadMessages() {
         const savedMessages = JSON.parse(localStorage.getItem('chatMessages')) || [];
+        
+        // Se não houver mensagens salvas, adiciona a mensagem inicial do bot
+        if (savedMessages.length === 0) {
+            const initialMessage = {
+                type: 'bot',
+                text: 'Oi, como posso ajudar?'
+            };
+            savedMessages.push(initialMessage);
+        }
+
         savedMessages.forEach(msg => {
             const messageDiv = document.createElement('div');
             messageDiv.classList.add('chat-message', msg.type === 'user' ? 'user-message' : 'bot-message');
@@ -132,7 +137,7 @@
             chatContent.scrollTop = chatContent.scrollHeight;
         }
     });
-</script>
+    </script>
 
     <script src="./js/routes.js"></script>
     <script src="./js/main-bar.js"></script>
