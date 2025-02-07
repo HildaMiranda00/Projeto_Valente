@@ -27,12 +27,17 @@
         <label for="descricao">Descrição:</label>
         <textarea id="descricao" required></textarea>
       </div>
+
+      <div class="campo">
+        <label for="promotor">Quem promove:</label>
+        <input type="text" id="promotor" required>
+      </div>
   
       <div class="campo">
         <label for="local">Local:</label>
         <input type="text" id="local" required>
       </div>
-  
+
       <div class="campo-horizontal">
         <div class="campo">
           <label for="estado">Estado:</label>
@@ -77,34 +82,41 @@
   
       <div class="campo-horizontal">
         <div class="campo">
-          <label for="data">Data:</label>
-          <input type="date" id="data" required>
+          <label for="data-inicio">Data (início):</label>
+          <input type="date" id="data-inicio" required>
         </div>
-  
         <div class="campo">
-          <label for="horario">Horário:</label>
-          <input type="time" id="horario" required>
+          <label for="horario-inicio">Hora (início):</label>
+          <input type="time" id="horario-inicio" required>
         </div>
-
       </div>
-  
-      <div class="campo">
-        <label for="link">Link do Evento:</label>
-        <input type="url" id="link" placeholder="https://example.com">
+      
+      <div class="campo-horizontal">
+        <div class="campo">
+          <label for="data-fim">Data (fim):</label>
+          <input type="date" id="data-fim" required>
+        </div>
+        <div class="campo">
+          <label for="horario-fim">Hora (fim):</label>
+          <input type="time" id="horario-fim" required>
+        </div>
       </div>
-  
+      
+   
       <div class="campo">
         <label for="email">E-mail:</label>
         <input type="email" id="email">
       </div>
-  
-      <div class="campo">
-        <label for="promotor">Quem promove:</label>
-        <input type="text" id="promotor" required>
-      </div>
       
-      <label for="imagem">Imagem do Evento (opcional):</label>
+      <div class="campo">
+        <label for="link">Link do Evento:</label>
+        <input type="url" id="link" placeholder="https://exemplo.com">
+      </div>
+       
+      <div class="campo-imagem">
+      <label id="labelImagem" for="imagem">Imagem do Evento (opcional):</label>
       <input type="file" id="imagem" name="imagem" accept="image/*">
+    </div>
 
       <button type="submit">Inserir Evento</button>
     </div>

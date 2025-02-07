@@ -7,8 +7,11 @@ document.getElementById('eventoForm').addEventListener('submit', function(event)
   const promotor = document.getElementById('promotor').value;
   const local = document.getElementById('local').value;
   const estado = document.getElementById('estado').value;
-  const data = document.getElementById('data').value;
-  const horario = document.getElementById('horario').value;
+  const dataInicio = document.getElementById('data-inicio').value;
+  const horarioInicio = document.getElementById('horario-inicio').value;
+  const dataFim = document.getElementById('data-fim').value;
+  const horarioFim = document.getElementById('horario-fim').value;
+  
   let telefone = document.getElementById('telefone').value.replace(/\D/g, ''); // Remove caracteres não numéricos
   const email = document.getElementById('email').value;
   const link = document.getElementById('link').value;
@@ -28,18 +31,24 @@ document.getElementById('eventoForm').addEventListener('submit', function(event)
   }
 
   // Verificação dos campos obrigatórios
-  if (!titulo || !descricao || !promotor || !local || !estado || !data || !horario || (!email && !telefone)) {
+  if (!titulo || !descricao || !promotor || !local || !estado || !dataInicio || !horarioInicio || !dataFim || !horarioFim || (!email && !telefone)) {
     alert('Todos os campos obrigatórios devem ser preenchidos. Preencha o telefone ou o e-mail para contato.');
     return;
   }
 
   // Ajusta a data para evitar problemas de fuso horário
-  const dataEvento = new Date(data + 'T00:00:00');
+  const dataInicioEvento = new Date(`${dataInicio}T${horarioInicio}`);
+  const dataFimEvento = new Date(`${dataFim}T${horarioFim}`);
   const hoje = new Date();
   hoje.setHours(0, 0, 0, 0);
 
-  if (dataEvento < hoje) {
-    alert('A data do evento não pode ser anterior à data atual.');
+  if (dataInicioEvento < hoje) {
+    alert('A data de início do evento não pode ser anterior à data atual.');
+    return;
+  }
+
+  if (dataFimEvento < dataInicioEvento) {
+    alert('A data de fim do evento não pode ser anterior à data de início.');
     return;
   }
 
@@ -72,8 +81,10 @@ document.getElementById('eventoForm').addEventListener('submit', function(event)
       promotor,
       local,
       estado,
-      data: dataEvento.toISOString().split('T')[0],
-      horario,
+      dataInicio,
+      horarioInicio,
+      dataFim,
+      horarioFim,
       telefone,
       email,
       link,

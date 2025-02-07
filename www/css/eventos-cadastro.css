@@ -23,6 +23,7 @@ html, body {
     font-size: var(--font-size-base);
     font-family: Arial, sans-serif;
     touch-action: manipulation !important;
+  
 }
 
 .eventos-container {
@@ -115,16 +116,12 @@ input, textarea, select {
 }
 
 
-textarea {
-    resize: vertical; /* Garante que o campo possa ser redimensionado verticalmente */
-}
-
 #descricao{
    height: 6rem;
 }
 
 #estado{
-    width: 8.1rem;
+    width: 8.75rem;
 }
 
 
@@ -136,7 +133,11 @@ textarea {
 }
 
 .campo-horizontal .campo {
-    flex: 1; /* Divide o espaço igualmente */
+    flex: 1; 
+}
+
+#data-inicio, #data-fim {
+    width: 7.5rem; /* Ajuste conforme necessário */
 }
 
 /* Estilo do botão */
@@ -167,4 +168,9 @@ button:hover {
 }
 
 
+.campo-imagem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem; /* Reduz o espaçamento entre label e input */
+}
 
