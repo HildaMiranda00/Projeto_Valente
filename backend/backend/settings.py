@@ -156,3 +156,11 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'backend.wsgi.application'
+CSRF_TRUSTED_ORIGINS = [
+    "https://localhost",
+    "http://localhost",
+    "https://127.0.0.1",
+    "http://127.0.0.1",
+    "http://10.0.2.2", 
+    "https://10.0.2.2"
+]

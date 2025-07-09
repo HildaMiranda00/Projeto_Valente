@@ -1,15 +1,10 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-#from transformers import AutoTokenizer, AutoModelForQuestionAnswering
-#import torch
 import json
-#from difflib import get_close_matches
+from openai import OpenAI
+import os
 
-# Carregar o modelo e tokenizer treinados
-#model_path = "C:/Users/Hilda/Desktop/Projeto_Valente/backend/chatbot/model"
-  # Caminho para o modelo treinado
-#tokenizer = AutoTokenizer.from_pretrained(model_path)
-#model = AutoModelForQuestionAnswering.from_pretrained(model_path)
+client = OpenAI(api_key="#")
 
 # Respostas padrão para perguntas comuns
 default_responses = {
@@ -41,7 +36,7 @@ default_responses = {
         "- Delegacia de Proteção à Criança e ao Adolescente: Encontre a delegacia mais próxima.\n"
         "- Aplicativo Proteja Brasil: Faça a denúncia pelo aplicativo."
     ),
-    "posso denunciar anonimamente": (
+    "posso fazer uma denuncia anonimamente": (
         "Sim, você pode denunciar anonimamente. O Disque 100 e o Aplicativo Proteja Brasil permitem denúncias anônimas. "
         "Seu sigilo será preservado."
     ),
@@ -256,54 +251,33 @@ default_responses = {
 @csrf_exempt
 def chat(request):
     if request.method == 'POST':
-        data = json.loads(request.body)
-        user_message = data.get('message', '').strip().lower()
-
-        if not user_message:
-            return JsonResponse({'response': 'Por favor, insira uma mensagem válida.'})
-
-        # Verificar se a mensagem do usuário corresponde a alguma chave no dicionário
-        #matches = get_close_matches(user_message, default_responses.keys(), n=1, cutoff=0.6)
-        #if matches:
-        #    return JsonResponse({'response': default_responses[matches[0]]})
-
-        # Contexto detalhado para o modelo
-        context = (
-            "Ajudar pessoas a denunciar abuso sexual infantil. "
-            "O número do Disque Denúncia para relatar abuso sexual em crianças é o Disque 100. "
-            "Este serviço é gratuito, funciona 24 horas por dia e pode ser acessado de qualquer lugar do Brasil. "
-            "Além disso, você pode procurar o Conselho Tutelar mais próximo ou a Delegacia de Proteção à Criança e ao Adolescente."
-        )
-
         try:
-            # Tokenizar a entrada
-            #inputs = tokenizer(
-             #   user_message,
-              #  context,
-               # return_tensors="pt",
-                #max_length=384,
-               # truncation="only_second",
-               # padding="max_length"
-            #)
+            data = json.loads(request.body)
+            user_message = data.get('message', '').strip().lower()
 
-            # Gerar a resposta do modelo
-            #with torch.no_grad():
-                #outputs = model(**inputs)
+            if not user_message:
+                return JsonResponse({'response': 'Por favor, insira uma mensagem válida.'})
 
-            # Extrair a resposta
-            #answer_start = torch.argmax(outputs.start_logits)
-            #answer_end = torch.argmax(outputs.end_logits) + 1
-            #answer_ids = inputs["input_ids"][0][answer_start:answer_end]
-            #answer = tokenizer.decode(answer_ids, skip_special_tokens=True)
+            if user_message in default_responses:
+                return JsonResponse({'response': default_responses[user_message]})
 
-            # Validar a resposta
-            if not answer.strip():
-                answer = "Desculpe, não consegui encontrar uma resposta. Por favor, reformule sua pergunta."
+            messages = [
+                {"role": "system", "content": "Você é um assistente que ajuda pessoas com informações sobre abuso infantil e proteção de direitos. Você está falando com crianças, seja empático e cuidadoso, as pessoas estão passando por um momento delicado. Sempre que possível tente dizer palavras dew conforto."},
+                {"role": "user", "content": user_message}
+            ]
 
+            response = client.chat.completions.create(
+                model="gpt-3.5-turbo",
+                messages=messages,
+                temperature=0.6,
+                max_tokens=500
+            )
+
+            answer = response.choices[0].message.content.strip()
             return JsonResponse({'response': answer})
-        
+
         except Exception as e:
-            print(f"Erro ao processar a mensagem: {e}")
-            return JsonResponse({'response': 'Ocorreu um erro ao processar sua mensagem. Tente novamente.'}, status=500)
+            print(f"Erro com a OpenAI API: {e}")
+            return JsonResponse({'response': 'Ocorreu um erro ao buscar resposta com IA. Tente novamente mais tarde.'}, status=500)
 
     return JsonResponse({'error': 'Método não permitido'}, status=405)
