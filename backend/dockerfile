@@ -1,0 +1,23 @@
+# Usa uma imagem Python leve
+FROM python:3.11-slim
+
+# Cria diretório de trabalho
+WORKDIR /app
+
+# Copia dependências do projeto
+COPY requirements.txt .
+
+# Instala os pacotes Python
+RUN pip install --upgrade pip && pip install -r requirements.txt
+
+# Copia o restante da aplicação
+COPY . .
+
+# Coleta os arquivos estáticos (evita fazer isso manualmente depois)
+RUN python manage.py collectstatic --noinput
+
+# Porta padrão usada no Fly.io
+EXPOSE 8000
+
+# Comando de entrada usando Gunicorn
+CMD ["gunicorn", "backend.wsgi:application", "--bind", "0.0.0.0:8000"]

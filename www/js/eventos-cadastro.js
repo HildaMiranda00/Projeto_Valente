@@ -88,15 +88,27 @@ document.getElementById('eventoForm').addEventListener('submit', function(event)
       telefone,
       email,
       link,
-      imagem: imagemBase64 // Agora a imagem é armazenada em Base64
+      //imagem: imagemBase64 // Agora a imagem é armazenada em Base64
     };
+//https://backend-cool-forest-8585.fly.dev/management/create_event/
+fetch("https://10.0.2.2:8000/management/create_event/", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    event: evento,
+  })
+})
+.then(response => response.json())
+.then(data => console.log(data));
 
     // Recuperando os eventos do localStorage e adicionando o novo evento
-    let eventos = JSON.parse(localStorage.getItem('eventos')) || [];
-    eventos.push(evento);
+    //let eventos = JSON.parse(localStorage.getItem('eventos')) || [];
+    //eventos.push(evento);
 
     // Atualizando o localStorage com a lista de eventos
-    localStorage.setItem('eventos', JSON.stringify(eventos));
+    //localStorage.setItem('eventos', JSON.stringify(eventos));
 
     // Mensagem de sucesso e redirecionamento
     alert('Evento cadastrado com sucesso!');
