@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+    --branco: #ffff;
+    --bege: #F9F5E9;
+    --marrom: #4D352D;
+    --rosa: #E291A3;
+    --laranja: #FAB958;
+    --azul: #65B6DB;
+    --verde: #78C19E;
+    --font-size-base: 1rem;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: var(--bege);
+    color: var(--marrom);
+    font-size: var(--font-size-base);
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    background-color: var(--verde);
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.home-button {
+    color: var(--branco);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--marrom);
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+
+    
+}
+
+.home-button:hover {
+    background-color: var(--rosa);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+section {
+    background-color: var(--branco);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 600px;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--marrom);
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+label {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--verde);
+    margin-bottom: 0.2rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 2px solid var(--verde);
+    border-radius: 0.3rem;
+    background-color: var(--branco);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+input[type="checkbox"] {
+    margin-right: 0.5rem;
+    transform: scale(1.2);
+}
+
+small#requisitos-senha {
+    color: var(--marrom);
+    font-size: 0.9rem;
+    margin-top: -1rem;
+}
+
+button {
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: var(--verde);
+    color: var(--branco);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--rosa);
+}
+
+a#recuperar-senha {
+    display: inline-block;
+    margin-top: -0.5rem;
+    text-align: right;
+    font-size: 0.9rem;
+    color: var(--azul);
+    text-decoration: none;
+}
+
+a#recuperar-senha:hover {
+    text-decoration: underline;
+}
+
+.mensagem-erro {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: -0.5rem;
+    text-align: center;
+}
+
+.campo-senha {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.campo-senha input {
+    flex: 1;
+    padding-right: 2.5rem;
+}
+
+.icone-senha {
+    position: absolute;
+    right: 0.8rem;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    user-select: none;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.icone-senha:hover {
+    opacity: 1;
+}
+
+.campo-form {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.campo-form input {
+    flex: 1;
+    padding: 0.8rem;
+    font-size: 1rem;
+    width: 100%;
+    border: 2px solid var(--verde);
+    border-radius: 0.3rem;
+    background-color: var(--branco);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding-right: 2.5rem; /* espaço para possível ícone futuro */
+}
+
