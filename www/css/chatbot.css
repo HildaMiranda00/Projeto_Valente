@@ -139,3 +139,24 @@ body {
   cursor: pointer;
   border-radius: 15px;
 }
+
+#audio-button {
+  padding: 8px;
+  margin-right: 10px;
+  background-color: var(--verde);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#audio-button:active {
+  background-color: var(--rosa);
+}
+
+.mic-icon {
+  width: 24px;
+  height: 24px;
+}

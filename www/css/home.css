@@ -98,7 +98,7 @@ a:hover {
 
 /* Imagem de apoio (baixo) */
 .support-image {
-    width: 10rem; /* Usando rem para largura proporcional */
+    width: 5rem; /* estava 10rem. Usando rem para largura proporcional */
     height: auto;
     margin-top: 2rem;
 }
