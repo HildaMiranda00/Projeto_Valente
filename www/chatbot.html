@@ -20,7 +20,7 @@
         </div> -->
         <div class="chat-input">
             <input type="text" placeholder="Envie uma pergunta" id="chat-input">
-            <button id="audio-button" title="Falar">
+            <button onclick="reconhecerFala()" id="audio-button" title="Falar">
                 <img src="img/microfone.svg" alt="Falar" class="mic-icon">
             </button>
             <button id="send-button">Enviar</button>
@@ -88,7 +88,7 @@
         chatContent.scrollTop = chatContent.scrollHeight;
 
         try {
-            const response = await fetch('https://10.0.2.2:8000/chat', {
+            const response = await fetch('https://backend-cool-forest-8585.fly.dev/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ message: userMessage })
@@ -129,8 +129,59 @@
             chatContent.scrollTop = chatContent.scrollHeight;
         }
     });
-    </script>
 
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+  console.log("Cordova pronto, plugins carregados!");
+
+  // Coloque aqui as funções que usam plugins
+  window.reconhecerFala = function() {
+    console.log("Botão de voz clicado");
+
+    if (!window.plugins || !window.plugins.speechRecognition) {
+      alert("Plugin de reconhecimento de voz não está disponível.");
+      return;
+    }
+
+    window.plugins.speechRecognition.isRecognitionAvailable(function(available) {
+      if (!available) {
+        alert("Reconhecimento de voz não está disponível neste dispositivo.");
+        return;
+      }
+
+      window.plugins.speechRecognition.hasPermission(function(isGranted) {
+        if (!isGranted) {
+          window.plugins.speechRecognition.requestPermission(
+            () => iniciarReconhecimento(),
+            (err) => alert("Permissão negada: " + err)
+          );
+        } else {
+          iniciarReconhecimento();
+        }
+      });
+    });
+
+    function iniciarReconhecimento() {
+      window.plugins.speechRecognition.startListening(
+        function(resultados) {
+          console.log("Resultados:", resultados);
+          document.getElementById("chat-input").value = resultados[0];
+        },
+        function(erro) {
+          alert("Erro ao reconhecer voz: " + erro);
+        },
+        {
+          language: "pt-BR",
+          matches: 1,
+          showPopup: true
+        }
+      );
+    }
+  };
+}
+    </script>
+    <script src="cordova.js"></script>
     <script src="./js/routes.js"></script>
     <script src="./js/main-bar.js"></script>
 </body>

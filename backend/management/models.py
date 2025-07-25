@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class Event(models.Model):
         """Evento de apoio"""
-        name = models.CharField(u'Nome', max_length=300)
+        title = models.CharField(u'título', max_length=300, default="")
         is_active = models.BooleanField(default=True)
         description = models.CharField(u'Descrição', max_length=1000)
         promotes_by = models.CharField(u'Nome', max_length=300)
@@ -15,8 +15,9 @@ class Event(models.Model):
         end_date = models.DateField()
         time_start = models.TimeField()
         time_end = models.TimeField()
-        email = models.CharField(u'Email', max_length=100)
+        email = models.CharField(u'Email', max_length=150)
         event_link = models.CharField(u'Link do evento', max_length=100)
+        imagem = models.CharField(u'url imagem', blank=True, null=True, max_length=300)
 
         def __str__(self):
             return self.name

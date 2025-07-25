@@ -3,8 +3,9 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from openai import OpenAI
 import os
+from decouple import config
 
-client = OpenAI(api_key="#")
+client = OpenAI(api_key=config('API_OPENAI'))
 
 # Respostas padrão para perguntas comuns
 default_responses = {
@@ -262,7 +263,7 @@ def chat(request):
                 return JsonResponse({'response': default_responses[user_message]})
 
             messages = [
-                {"role": "system", "content": "Você é um assistente que ajuda pessoas com informações sobre abuso infantil e proteção de direitos. Você está falando com crianças, seja empático e cuidadoso, as pessoas estão passando por um momento delicado. Sempre que possível tente dizer palavras dew conforto."},
+                {"role": "system", "content": "Você é um assistente que ajuda pessoas com informações sobre abuso infantil e proteção de direitos. Você está falando com crianças, seja empático e cuidadoso, as pessoas estão passando por um momento delicado. Sempre que possível tente dizer palavras de conforto."},
                 {"role": "user", "content": user_message}
             ]
 

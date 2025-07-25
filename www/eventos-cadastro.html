@@ -16,66 +16,66 @@
     </div>
   </div>
 
-  <form id="eventoForm">
+  <form id="event-form" method="POST" enctype="multipart/form-data">
     <div class="form-container">
       <div class="campo">
         <label for="titulo">Título:</label>
-        <input type="text" id="titulo" required>
+        <input type="text" name="titulo" required>
       </div>
   
       <div class="campo">
         <label for="descricao">Descrição:</label>
-        <textarea id="descricao" required></textarea>
+        <textarea name="descricao" required></textarea>
       </div>
 
       <div class="campo">
         <label for="promotor">Quem promove:</label>
-        <input type="text" id="promotor" required>
+        <input type="text" name="promotor" required>
       </div>
   
       <div class="campo">
         <label for="local">Local:</label>
-        <input type="text" id="local" required>
+        <input type="text" name="local" required>
       </div>
 
       <div class="campo-horizontal">
         <div class="campo">
           <label for="estado">Estado:</label>
-          <select id="estado" required>
-            <option value="">Selecione</option>
-            <option value="Acre">Acre</option>
-            <option value="Alagoas">Alagoas</option>
-            <option value="Amapá">Amapá</option>
-            <option value="Amazonas">Amazonas</option>
-            <option value="Bahia">Bahia</option>
-            <option value="Ceará">Ceará</option>
-            <option value="Distrito Federal">Distrito Federal</option>
-            <option value="Espírito Santo">Espírito Santo</option>
-            <option value="Goiás">Goiás</option>
-            <option value="Maranhão">Maranhão</option>
-            <option value="Mato Grosso">Mato Grosso</option>
-            <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
-            <option value="Minas Gerais">Minas Gerais</option>
-            <option value="Pará">Pará</option>
-            <option value="Paraíba">Paraíba</option>
-            <option value="Paraná">Paraná</option>
-            <option value="Pernambuco">Pernambuco</option>
-            <option value="Piauí">Piauí</option>
-            <option value="Rio de Janeiro">Rio de Janeiro</option>
-            <option value="Rio Grande do Norte">Rio Grande do Norte</option>
-            <option value="Rio Grande do Sul">Rio Grande do Sul</option>
-            <option value="Rondônia">Rondônia</option>
-            <option value="Roraima">Roraima</option>
-            <option value="Santa Catarina">Santa Catarina</option>
-            <option value="São Paulo">São Paulo</option>
-            <option value="Sergipe">Sergipe</option>
-            <option value="Tocantins">Tocantins</option>
+          <select name="estado" required>
+<option value="">Selecione</option>
+<option value="AC">Acre</option>
+<option value="AL">Alagoas</option>
+<option value="AP">Amapá</option>
+<option value="AM">Amazonas</option>
+<option value="BA">Bahia</option>
+<option value="CE">Ceará</option>
+<option value="DF">Distrito Federal</option>
+<option value="ES">Espírito Santo</option>
+<option value="GO">Goiás</option>
+<option value="MA">Maranhão</option>
+<option value="MT">Mato Grosso</option>
+<option value="MS">Mato Grosso do Sul</option>
+<option value="MG">Minas Gerais</option>
+<option value="PA">Pará</option>
+<option value="PB">Paraíba</option>
+<option value="PR">Paraná</option>
+<option value="PE">Pernambuco</option>
+<option value="PI">Piauí</option>
+<option value="RJ">Rio de Janeiro</option>
+<option value="RN">Rio Grande do Norte</option>
+<option value="RS">Rio Grande do Sul</option>
+<option value="RO">Rondônia</option>
+<option value="RR">Roraima</option>
+<option value="SC">Santa Catarina</option>
+<option value="SP">São Paulo</option>
+<option value="SE">Sergipe</option>
+<option value="TO">Tocantins</option>
           </select>
         </div>
   
         <div class="campo">
           <label for="telefone">Telefone:</label>
-          <input type="tel" id="telefone" placeholder="(XX) XXXX-XXXX">
+          <input type="tel" name="telefone" placeholder="(XX) XXXX-XXXX">
         </div>
 
       </div>
@@ -83,45 +83,83 @@
       <div class="campo-horizontal">
         <div class="campo">
           <label for="data-inicio">Data (início):</label>
-          <input type="date" id="data-inicio" required>
+          <input type="date" name="data-inicio" required>
         </div>
         <div class="campo">
           <label for="horario-inicio">Hora (início):</label>
-          <input type="time" id="horario-inicio" required>
+          <input type="time" name="horario-inicio" required>
         </div>
       </div>
       
       <div class="campo-horizontal">
         <div class="campo">
           <label for="data-fim">Data (fim):</label>
-          <input type="date" id="data-fim" required>
+          <input type="date" name="data-fim" required>
         </div>
         <div class="campo">
           <label for="horario-fim">Hora (fim):</label>
-          <input type="time" id="horario-fim" required>
+          <input type="time" name="horario-fim" required>
         </div>
       </div>
       
    
       <div class="campo">
         <label for="email">E-mail:</label>
-        <input type="email" id="email">
+        <input type="email" name="email">
       </div>
       
       <div class="campo">
         <label for="link">Link do Evento:</label>
-        <input type="url" id="link" placeholder="https://exemplo.com">
+        <input type="url" name="link" placeholder="https://exemplo.com">
       </div>
        
       <div class="campo-imagem">
       <label id="labelImagem" for="imagem">Imagem do Evento (opcional):</label>
-      <input type="file" id="imagem" name="imagem" accept="image/*">
+      <button type="button" id="selecionarImagem">Selecionar Imagem</button>
+     <img id="preview" style="max-width: 100%; height: auto; display: block; margin-top: 10px;">
     </div>
 
       <button type="submit">Inserir Evento</button>
     </div>
   </form>
+  <script src="cordova.js"></script>
   <script src="./js/eventos-cadastro.js"></script>
   <script src="./js/main-bar.js"></script>
+  <script>
+  document.addEventListener('deviceready', function () {
+
+    const botao = document.getElementById('selecionarImagem');
+    const preview = document.getElementById('preview');
+
+    botao.addEventListener('click', function () {
+      
+      if (!navigator.camera) {
+        alert('❌ Plugin da câmera não está disponível!');
+        return;
+      }
+
+      navigator.camera.getPicture(
+function onSuccess(imageData) {
+
+  const prefix = "data:image/jpeg;base64,";
+  const base64Image = imageData.startsWith(prefix) ? imageData : prefix + imageData;
+
+  const preview = document.getElementById("preview");
+  preview.src = base64Image;
+},
+        function onFail(message) {
+          alert('Erro: ' + message);
+        },
+        {
+          quality: 60,
+          destinationType: Camera.DestinationType.DATA_URL,
+          sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+          encodingType: Camera.EncodingType.JPEG,
+          mediaType: Camera.MediaType.PICTURE
+        }
+      );
+    });
+  }, false);
+</script>
 </body>
 </html>

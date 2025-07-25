@@ -1,27 +1,24 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const eventos = JSON.parse(localStorage.getItem('eventos')) || [];
+  const filtroSelect = document.getElementById('filtroEstado');
+  const eventosList = document.getElementById('eventosList');
 
-  function filtrarEventos() {
-    const estadoFiltro = document.getElementById('filtroEstado').value;
-    const dataAtual = new Date();
-    dataAtual.setHours(0, 0, 0, 0);
+  async function buscarEventos() {
+    const estadoFiltro = filtroSelect.value;
+    const url = estadoFiltro
+      ? `https://backend-cool-forest-8585.fly.dev/management/event_list/?estado=${estadoFiltro}`
+      : `https://backend-cool-forest-8585.fly.dev/management/event_list/`;
 
-    const eventosFiltrados = eventos.filter(evento => {
-      const dataInicioEvento = new Date(`${evento.dataInicio}T${evento.horarioInicio}`);
-      return (!estadoFiltro || evento.estado === estadoFiltro) && dataInicioEvento >= dataAtual;
-    });
-
-    eventosFiltrados.sort((a, b) => {
-      const dataA = new Date(`${a.dataInicio}T${a.horarioInicio}`);
-      const dataB = new Date(`${b.dataInicio}T${b.horarioInicio}`);
-      return dataA - dataB;
-    });
-
-    exibirEventos(eventosFiltrados);
+    try {
+      const response = await fetch(url);
+      const eventos = await response.json();
+      exibirEventos(eventos);
+    } catch (error) {
+      console.error('Erro ao buscar eventos:', error);
+      eventosList.innerHTML = '<p>Erro ao carregar eventos.</p>';
+    }
   }
 
   function exibirEventos(eventos) {
-    const eventosList = document.getElementById('eventosList');
     eventosList.innerHTML = '';
 
     if (eventos.length === 0) {
@@ -33,14 +30,12 @@ document.addEventListener('DOMContentLoaded', function () {
       const divEvento = document.createElement('div');
       divEvento.classList.add('evento');
 
-      const imagemEvento = evento.imagem ? evento.imagem : 'img/tela_eventos_imagem_perfil.png';
-
-      // Formatação das datas
+      const imagemEvento = evento.imagem || 'img/tela_eventos_imagem_perfil.png';
       const dataInicioFormatada = evento.dataInicio.split('-').reverse().join('/');
       const dataFimFormatada = evento.dataFim.split('-').reverse().join('/');
 
       divEvento.innerHTML = `
-        <img src="${imagemEvento}" alt="Imagem do evento" id="imgEvento" class="card-image">
+        <img src="${imagemEvento}" alt="Imagem do evento" class="card-image">
         <h3>${evento.titulo}</h3>
         <p>${evento.descricao}</p>
         <p><strong>Promovido por:</strong> ${evento.promotor}</p>
@@ -57,10 +52,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  document.getElementById('filtroEstado').addEventListener('change', filtrarEventos);
-  filtrarEventos();
-
-  document.querySelector('.cadastro-container button').onclick = function () {
-    window.location.href = 'eventos-cadastro.html';
-  };
+  filtroSelect.addEventListener('change', buscarEventos);
+  buscarEventos();
 });
